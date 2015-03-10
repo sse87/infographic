@@ -3,32 +3,35 @@
 
 $(document).ready(function () {
 	
-	var yellow = $('<div></div>', {
+	var base = $('<section></section>', {
 		'id': 'yellow',
-		'class': 'some classes idk'
-	}).appendTo('body > .container');
+		'class': 'some three classes'
+	});
+	$('.main-content').append(base);
 	
-	yellow.append( $('<h1>Yellow, this is the yellow section</h1>') );
 	
-	$('<p>This text is appended to the section by a different way.</p>').appendTo(yellow);
-	
+	$('<h1>Yellow, this is the yellow section</h1>').appendTo(base);
+	$('<p>Hi, i\'m a paragraph!</p>').appendTo(base);
 	
 	// Scroll button
-	$('<button>Scroll to next...</button>').appendTo(yellow).click(function () {
+	var scrollBtn = $('<button>Scroll to next...</button>').appendTo(base);
+	// Bind click event
+	scrollBtn.click(function () {
 		
-		var nextSectionPosition = yellow.next().position().top;
-		
-		scrollTo(nextSectionPosition, function () {
-			alert('Scrolling animation fininshed, this is the callback function letting you know [yellow]');
+		var nextSectionPosition = base.next().position().top;
+		animateTo({
+			position: nextSectionPosition,
+			callback: function () {
+				alert('Scrolling animation finished, this is the callback function letting you know [yellow]');
+			}
 		});
 		
-	})
+	});
+	
+	// ...
 	
 });
 
-var scrollTo = function (position, callback) {
-	$('html, body').animate({ scrollTop: position }, 'slow', callback);
-};
 
 
 

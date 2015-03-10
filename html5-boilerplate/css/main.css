@@ -66,10 +66,16 @@ textarea { resize: vertical; }
    Author's custom styles
    ========================================================================== */
 
-.container {
+/* To fix margin overflow */
+body > .main-content > section {
+	border: 1px solid transparent;
+}
+
+.limit {
 	margin: 0 auto;
+	max-width: 1200px;
 	padding: 20px;
-	width: 1200px;
+	width: 100%;
 }
 
 body > header {

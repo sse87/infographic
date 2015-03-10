@@ -3,32 +3,36 @@
 
 $(document).ready(function () {
 	
-	var $red = $('<div></div>', {
+	var base = $('<section></section>', {
 		'id': 'red',
-		'class': 'some classes idk'
-	}).appendTo('body > .container');
+		'class': 'some three classes'
+	});
+	$('.main-content').append(base);
 	
-	$red.append( $('<h1>Hello, this is the red section</h1>') );
-	
-	$('<p>This text is appended to the section by a different way.</p>').appendTo($red);
-	
+	var wrapper = $('<div></div>', { 'class': 'limit' }).appendTo(base);
+	$('<h1>Hello, this is the red section</h1>').appendTo(wrapper);
+	$('<p>Hi, i\'m a paragraph!</p>').appendTo(wrapper);
+	$('<p>This is wrapped up in a limited container</p>').appendTo(wrapper);
 	
 	// Scroll button
-	var $scrollBtn = $('<button>Scroll to next...</button>').appendTo($red);
-	$scrollBtn.click(function () {
+	var scrollBtn = $('<button>Scroll to next...</button>').appendTo(wrapper);
+	// Bind click event
+	scrollBtn.click(function () {
 		
-		var nextSectionPosition = $red.next().position().top;
-		scrollTo(nextSectionPosition, function () {
-			alert('Scrolling animation fininshed, this is the callback function letting you know [red]');
+		var nextSectionPosition = base.next().position().top;
+		animateTo({
+			position: nextSectionPosition,
+			callback: function () {
+				alert('Scrolling animation finished, this is the callback function letting you know [red]');
+			}
 		});
 		
-	})
+	});
+	
+	// ...
 	
 });
 
-var scrollTo = function (position, callback) {
-	$('html, body').animate({ scrollTop: position }, 'slow', callback);
-};
 
 
 
