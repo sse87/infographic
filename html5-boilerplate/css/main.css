@@ -67,9 +67,7 @@ textarea { resize: vertical; }
    ========================================================================== */
 
 /* To fix margin overflow */
-body > .main-content > section {
-	border: 1px solid transparent;
-}
+.main-content > section { overflow: hidden; }
 
 .limit {
 	margin: 0 auto;
@@ -78,14 +76,36 @@ body > .main-content > section {
 	width: 100%;
 }
 
+
+
+.main-content {
+	background-color: #ffffff;
+	margin: 160px 0 300px;
+}
+.main-content section {
+	border-bottom: 2px solid #dadada;
+}
+
+
 body > header {
 	background-color: #dadada;
-	
+	height: 160px;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
 }
 
 body > footer {
-	background-color: #dadada;
+	background: url("../img/penises/first-penis.png") no-repeat scroll 10% 100% #ffffff;
+	background-size: contain;
+	bottom: 0;
+	height: 300px;
+	left: 0;
+	position: fixed;
+	right: 0;
 	text-align: center;
+	z-index: -1;
 }
 
 
