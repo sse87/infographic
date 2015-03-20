@@ -5,7 +5,8 @@ $(document).ready(function () {
 	
 	var base = $('<section></section>', {
 		'id': 'yellow',
-		'class': 'some three classes'
+		'class': 'some three classes',
+		'style': 'height: 1000px;'
 	});
 	$('.main-content').append(base);
 	

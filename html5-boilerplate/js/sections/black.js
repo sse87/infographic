@@ -4,15 +4,14 @@
 $(document).ready(function () {
 	
 	var base = $('<section></section>', {
-		'id': 'green',
+		'id': 'black',
 		'class': 'some three classes',
 		'style': 'height: 1000px;'
 	});
 	$('.main-content').append(base);
 	
-	
-	$('<h1>Hello, this is the green section</h1>').appendTo(base);
-	$('<p>This text is appended to the section by a different way.</p>').appendTo(base);
+	var wrapper = $('<div></div>', { 'class': 'limit' }).appendTo(base);
+	$('<h1>Hello, this is the black section</h1>').appendTo(wrapper);
 	
 	// ...
 	
