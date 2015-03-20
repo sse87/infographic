@@ -88,7 +88,7 @@ var Info = function () {
 		
 		var targetPos = mainWindowTop;
 		if (direction === 'down') {
-			for (var i = 0; (targetPos === mainWindowTop && i < base.sectionsEl.length); i++) {
+			for (var i = 0; (targetPos == mainWindowTop && i < base.sectionsEl.length); i++) {
 				
 				var thisSectionPos = $(base.sectionsEl[i]).position().top;
 				if (targetPos < thisSectionPos) {
@@ -103,13 +103,13 @@ var Info = function () {
 			}
 		}
 		else if (direction === 'up') {
-			for (var j = base.sectionsEl.length - 1; (targetPos === mainWindowTop && j >= 0); j--) {
+			for (var i = base.sectionsEl.length - 1; (targetPos == mainWindowTop && i >= 0); i--) {
 				
-				var thisSectionPos = $(base.sectionsEl[j]).position().top;
+				var thisSectionPos = $(base.sectionsEl[i]).position().top;
 				if (targetPos > thisSectionPos) {
 					targetPos = thisSectionPos;
 				}
-				//console.log('     thisSectionPos[' + j + ']: ' + thisSectionPos + ' - targetPos: ' + targetPos);
+				//console.log('     thisSectionPos[' + i + ']: ' + thisSectionPos + ' - targetPos: ' + targetPos);
 				
 			}
 		}
@@ -150,7 +150,7 @@ var animateTo = function (options) {
 	// The default settings, if defined in options, it will overwrite the defaults
 	var defaults = {
 		position: 0,
-		duration: 1000,// 'fast' === 400ms && 'slow' === 1000ms
+		duration: 400,// 'fast' === 400ms && 'slow' === 1000ms
 		easing: 'swing',
 		callback: function () {}
 	};
