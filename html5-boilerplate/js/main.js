@@ -12,6 +12,7 @@ var Info = function () {
 	this.windowHeight = $(window).height();
 	this.sectionHeight = this.windowHeight - this.headerHeight;
 	this.sectionsEl = $('.main-content section');
+	this.footerPos = $('.main-content section').last().position().top + this.sectionHeight;
 	
 	
 	
@@ -21,6 +22,7 @@ var Info = function () {
 		
 		this.overwriteScroll();
 		this.bindResize();
+		this.bindKeydown();
 		
 	};
 	
@@ -33,11 +35,48 @@ var Info = function () {
 			base.headerHeight = $('body > header').height();
 			base.windowHeight = $(window).height();
 			base.sectionHeight = base.windowHeight - base.headerHeight;
-			base.sectionsEl.css({ 'height': sectionHeight });
+			base.sectionsEl.css({ 'height': base.sectionHeight });
+			base.footerPos = $('.main-content section').last().position().top + base.sectionHeight;
 		});
 		
 		// Initial the section height
-		base.sectionsEl.css({ 'height': base.sectionHeight });
+		$(window).resize();
+	};
+	
+	this.bindKeydown = function () {
+		var base = this;
+		
+		$(document).keydown(function (e) {
+			var tag = e.target.tagName.toLowerCase();
+			switch (e.which) {
+				
+				case Key.UP:
+				case Key.PAGE_UP:
+					e.preventDefault();
+					if (tag != 'input' && tag != 'textarea') base.moveUp();
+				break;
+				
+				case Key.DOWN:
+				case Key.PAGE_DOWN:
+				case Key.SPACE:
+					e.preventDefault();
+					if (tag != 'input' && tag != 'textarea') base.moveDown();
+				break;
+				
+				case Key.HOME:
+					e.preventDefault();
+					console.log('animateTo: 0');
+					animateTo({ position: 0 });
+				break;
+				
+				case Key.END:
+					e.preventDefault();
+					console.log('animateTo: ' + base.footerPos);
+					animateTo({ position: base.footerPos });
+				break;
+			}
+		});
+		
 	};
 	
 	this.overwriteScroll = function () {
@@ -172,3 +211,48 @@ var animateTo = function (options) {
 	
 };
 
+var Key = {
+	TAB: 9,
+	ENTER: 13,
+	ESC: 27,
+	SPACE: 32,
+	LEFT: 37,
+	UP: 38,
+	RIGHT: 39,
+	DOWN: 40,
+	SHIFT: 16,
+	CTRL: 17,
+	ALT: 18,
+	PAGE_UP: 33,
+	PAGE_DOWN: 34,
+	HOME: 36,
+	END: 35,
+	BACKSPACE: 8,
+	DELETE: 46,
+	isArrow: function (k) {
+		k = k.which ? k.which : k;
+		switch (k) {
+			case KEY.LEFT:
+			case KEY.RIGHT:
+			case KEY.UP:
+			case KEY.DOWN:
+				return true;
+		}
+		return false;
+	},
+	isControl: function (e) {
+		var k = e.which;
+		switch (k) {
+			case KEY.SHIFT:
+			case KEY.CTRL:
+			case KEY.ALT:
+				return true;
+		}
+		if (e.metaKey) return true;
+		return false;
+	},
+	isFunctionKey: function (k) {
+		k = k.which ? k.which : k;
+		return k >= 112 && k <= 123;
+	}
+};
