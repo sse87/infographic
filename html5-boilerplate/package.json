@@ -1,0 +1,21 @@
+{
+  "name": "naive",
+  "version": "1.0.0",
+  "description": "A package using naive versioning",
+  "author": "A confused individual <iam@confused.com>",
+  "private": true,
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "jshint": "^2.6.3",
+    "watch": "^0.14.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "jshint": "^2.6.3",
+    "watch": "^0.14.0"
+  }
+}
