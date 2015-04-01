@@ -2,3 +2,18 @@
 #green {
 	width: 100%;
 }
+
+#green p.box {
+	position: absolute;
+}
+
+#green .zombie {
+	background: none no-repeat scroll 0 0 transparent;
+	background-size: contain;
+	height: 450px;
+	position: absolute;
+	width: 450px;
+}
+
+
+
