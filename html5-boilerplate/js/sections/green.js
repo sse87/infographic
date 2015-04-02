@@ -3,6 +3,8 @@
 
 $(document).ready(function () {
 	
+
+	var Utils = new Utils();
 	var base = $('<section></section>', {
 		'id': 'green',
 		'class': 'some three classes',
