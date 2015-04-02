@@ -6,6 +6,18 @@ var Utils = function Utils() {
 
 };
 
+var getAttributeValueSeparator = function getAttributeValueSeparator(attribute) {
+
+	if (attribute === 'style')
+	{
+		return ';';
+	}else if(attribute === 'class')
+	{
+		return ' ';
+	}
+};
+
+
 /*
 *	Builds a HTML element
 *	--
@@ -19,39 +31,43 @@ var Utils = function Utils() {
 */
 Utils.prototype.buildMarkupElement = function (elementName, contents, listOfAttributes) {
 
-	// opening the tag
-	var result = '<' + elementName + ' ';
+	// creating the element
+	var result = $('<' + elementName + '>' + '</' + elementName + '>');
+	
 
-	var attributes = '';
-	if(listOfAttributes !== undefined)
-	{
+	if (listOfAttributes !== undefined) {
+		
+
 		// going through the attributes
 		listOfAttributes.forEach(function forEachAttribute(attribute) {
-			attributes += attribute.name + '="';
 
-			// going through the attribute values
+			var attributeValue = '';
+
+			// getting the attribute value separator
+			var separator = getAttributeValueSeparator(attribute.name);
+
+			// concatenating the attribute values
 			attribute.values.forEach(function forEachValue(value) {
-				attributes += value + ';';
+				attributeValue += value + separator;
 			});
 
-			attributes += '"';
+
+			// adding the attribute value
+			result.attr(attribute.name, attributeValue);
 		});
 	}
-	
-	// adding the attributes to the result and closing the beginning tag
-	result += attributes;
-	result += '>';
 
-	// adding content between the tags
-	result += contents;
-
-	// closing the tag
-	result += '<' + elementName + '/>';
+	// adding the contents
+	result.text(contents);
 
 	return result;
 };
 
 var buttstuff = new Utils();
+
+
+
+
 
 var attributes = [
 	{name: "class", values: ["red"]},
@@ -59,6 +75,10 @@ var attributes = [
 ];
 
 var butt = buttstuff.buildMarkupElement("div", "penis", attributes);
+
+
+$('.main-content').append(butt);
+
 
 console.log(butt);
 
