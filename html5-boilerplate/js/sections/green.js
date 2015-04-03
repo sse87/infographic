@@ -3,17 +3,23 @@
 
 $(document).ready(function () {
 	
+
+//	var Utils = new Utils();
+
+
+
+
 	var base = $('<section></section>', {
 		'id': 'green',
-		'class': 'some three classes',
-		'style': 'height: 1000px;'
+		'class': 'some three classes'
 	});
+
 	$('.main-content').append(base);
 	
 	
 	$('<p class="box" style="left: 50px;top: 200px;">Zombie art</p>').appendTo(base);
 	
-	$('<div></div>', {
+	$('<div /></div>', {
 		'class': 'zombie',
 		'style': 'left: 150px;bottom: 10%;background-image: url("img/zombies/zombie-01.jpg");'
 	}).appendTo(base);
