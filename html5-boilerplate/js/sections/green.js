@@ -43,15 +43,6 @@ $(document).ready(function () {
 		'style': 'left: 2110px;top: 15%;background-image: url("img/zombies/zombie-06.jpg");'
 	}).appendTo(base);
 	
-	var max = 0;
-	var maxWidth = 0;
-	base.find('> *').each(function (i) {
-		if (max < $(this).position().left) {
-			max = $(this).position().left;
-			maxWidth = $(this).width();
-		}
-	});
-	base.css('width', (max + maxWidth));
 	
 });
 

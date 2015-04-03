@@ -11,8 +11,8 @@ var Info = function () {
 	var defaultSettings = {
 		quietPeriod: 500,
 		animationDuration: 1000,
-		easing: 'cubic-bezier(.7,.1,.3,.9)',
-		sectionVerticalMoveDistance: 0.5
+		easing: $.bez([.7,.1,.3,.9]),// Equivalent to cubic-bezier(.7,.1,.3,.9)
+		sectionVerticalMoveDistance: 0.25
 	};
 	
 	// Public variables
@@ -27,16 +27,36 @@ var Info = function () {
 	this.activeSection = this.sectionsEl.first();
 	this.activeSectionViewportY = 0;
 	
+	this.progress = new Progress();
 	
 	// Initialization
 	this.init = function () {
 		if (verbose) console.log('init() BEGINS!');
 		
+		this.autoSectionWidth();
 		this.overwriteScroll();
 		this.bindResize();
 		this.bindKeydown();
 		
+		this.progress.init();
+		
 		if (verbose) console.log('init() ENDS!');
+	};
+	
+	this.autoSectionWidth = function () {
+		this.sectionsEl.each(function () {
+			var maxPosLeft = 0;
+			var maxWidth = 0;
+			$(this).find('> *').each(function (i) {
+				if (maxPosLeft < $(this).position().left) {
+					maxPosLeft = $(this).position().left;
+					maxWidth = $(this).width();
+				}
+			});
+			if ($(this).find('> *').length > 0 && (maxPosLeft + maxWidth) > $(this).width()) {
+				$(this).css('width', (maxPosLeft + maxWidth));
+			}
+		});
 	};
 	
 	this.bindResize = function () {
@@ -78,7 +98,7 @@ var Info = function () {
 				case Key.UP:
 				case Key.PAGE_UP:
 					e.preventDefault();
-					if (tag != 'input' && tag != 'textarea') base.moveUp();
+					if (tag !== 'input' && tag !== 'textarea') base.moveUp();
 				break;
 				
 				case Key.K:
@@ -87,19 +107,19 @@ var Info = function () {
 				case Key.PAGE_DOWN:
 				case Key.SPACE:
 					e.preventDefault();
-					if (tag != 'input' && tag != 'textarea') base.moveDown();
+					if (tag !== 'input' && tag !== 'textarea') base.moveDown();
 				break;
 				
 				case Key.A:
 				case Key.LEFT:
 					e.preventDefault();
-					if (tag != 'input' && tag != 'textarea') base.moveLeft();
+					if (tag !== 'input' && tag !== 'textarea') base.moveLeft();
 				break;
 				
 				case Key.D:
 				case Key.RIGHT:
 					e.preventDefault();
-					if (tag != 'input' && tag != 'textarea') base.moveRight();
+					if (tag !== 'input' && tag !== 'textarea') base.moveRight();
 				break;
 				
 			}
@@ -155,13 +175,20 @@ var Info = function () {
 		if (activeSectionWidth > base.windowWidth) {
 			
 			base.activeSectionViewportY += (direction === 'right' ? 1 : -1) * base.windowWidth * defaultSettings.sectionVerticalMoveDistance;
+			//console.log('if (' + base.activeSectionViewportY + ' < 0): ' + (base.activeSectionViewportY < 0).toString());
+			//console.log('else if (' + base.activeSectionViewportY + ' > ' + (activeSectionWidth - base.windowWidth) + '): ' + (base.activeSectionViewportY > (activeSectionWidth - base.windowWidth).toString()));
 			if (base.activeSectionViewportY < 0) {
 				base.activeSectionViewportY = 0;
 			} else if (base.activeSectionViewportY > (activeSectionWidth - base.windowWidth)) {
 				base.activeSectionViewportY = activeSectionWidth - base.windowWidth;
 			}
 			
+			// Move section view
 			$(base.activeSection).css('transform', 'translate3d(' + (-1 * base.activeSectionViewportY) + 'px,0,0)');
+			
+			// Calculate the active section progress
+			var maxProgress = activeSectionWidth - base.windowWidth;
+			this.progress.setProgress( base.activeSectionViewportY / maxProgress );
 			
 		}
 		
@@ -215,7 +242,13 @@ var Info = function () {
 		animateTo({ position: (targetPos - offset) });
 	};
 	
+	
+	
 };
+
+
+
+
 
 $(document).ready(function () {
 	
@@ -233,6 +266,57 @@ $(document).ready(function () {
 
 
 
+
+
+
+// This is to encapsulate the progress element and functionality
+var Progress = function () {
+	
+	this.progressWrapperEl = null;
+	this.progressEl = null;
+	
+	var hasInit = false;
+	var m_Progress = 0;
+	
+	this.setProgress = function (progress) {
+		if (progress >= 0 && progress <= 1) {
+			m_Progress = progress;
+			if (hasInit === false) {
+				this.init();
+			}
+			this.animateBar();
+		}
+	};
+	this.getProgress = function () {
+		return m_Progress;
+	};
+	
+	this.animateBar = function () {
+		$(this.progressEl).css('width', (m_Progress * 100) + '%');
+	};
+	
+	this.init = function () {
+		// Wrapper
+		this.progressWrapperEl = $('<div class="progress-wrapper"></div').css({
+			'background-color': '#000000',
+			'bottom': '0',
+			'height': '10px',
+			'position': 'absolute',
+			'width': '100%'
+		}).appendTo('html > body > header');
+		// Progress bar
+		this.progressEl = $('<div class="progress"></div>').css({
+			'background-color': '#ff0000',
+			'height': '10px',
+			'transition': 'width 1s cubic-bezier(.7,.1,.3,.9) 0s',
+			'width': '0%'
+		}).appendTo(this.progressWrapperEl);
+		// Init flag
+		hasInit = true;
+	};
+	
+};
+
 var animateTo = function (options) {
 	
 	// Make it idiot proof so the can't brake it
@@ -248,7 +332,7 @@ var animateTo = function (options) {
 	var animateToDefaults = {
 		position: 0,
 		duration: 1000,// 'fast' === 400ms && 'slow' === 1000ms
-		easing: 'cubic-bezier(.7,.1,.3,.9)',
+		easing: $.bez([.7,.1,.3,.9]),// Equivalent to cubic-bezier(.7,.1,.3,.9)
 		callback: function () {}
 	};
 	
@@ -260,7 +344,7 @@ var animateTo = function (options) {
 	var runCallback = true;
 	$('body, html').animate({
 		scrollTop: settings.position
-	}, settings.duration, function () {
+	}, settings.duration, settings.easing, function () {
 		if (runCallback) {
 			runCallback = false;
 			settings.callback();
