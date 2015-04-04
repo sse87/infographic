@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         // Task configuration
         jshint: {
-            files: ['Gruntfile.js', 'js/main.js', 'js/sections/*.js'],
+            files: ['Gruntfile.js', 'js/main.js', 'js/info.js', 'js/plugins/*.js', 'js/sections/*.js'],
             options: {
                 node: true,
                 curly: true,
