@@ -12,7 +12,7 @@ var Info = function () {
 		quietPeriod: 500,
 		animationDuration: 1000,
 		easing: 'cubic-bezier(.7,.1,.3,.9)',
-		sectionVerticalMoveDistance: 0.5
+		sectionVerticalMoveDistance: 0.01
 	};
 	
 	// Public variables

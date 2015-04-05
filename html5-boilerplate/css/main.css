@@ -72,7 +72,6 @@ textarea { resize: vertical; }
 .limit {
 	margin: 0 auto;
 	max-width: 1200px;
-	padding: 20px;
 	width: 100%;
 }
 
@@ -94,8 +93,9 @@ textarea { resize: vertical; }
 
 
 body > header {
-	background-color: #dadada;
-	height: 160px;
+	background-color: #EF6C00;
+    color: #FFF3E0;
+    font-size: 1.6em;
 	left: 0;
 	position: fixed;
 	right: 0;
