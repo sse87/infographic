@@ -1,17 +1,18 @@
 ﻿
 var Utils = function Utils() {
-	//var Filesystem = require('machinepack-fs');
+	//var Filesystem = require('../machinepack-fs');
 
 
 
 };
 
-var getAttributeValueSeparator = function getAttributeValueSeparator(attribute) {
+var getAttributeValueSeparator = function (attribute) {
 
 	if (attribute === 'style')
 	{
 		return ';';
-	}else if(attribute === 'class')
+	}
+	else if (attribute === 'class')
 	{
 		return ' ';
 	}
@@ -39,7 +40,7 @@ Utils.prototype.buildMarkupElement = function (elementName, contents, listOfAttr
 		
 
 		// going through the attributes
-		listOfAttributes.forEach(function forEachAttribute(attribute) {
+		listOfAttributes.forEach(function (attribute) {
 
 			var attributeValue = '';
 
@@ -47,7 +48,7 @@ Utils.prototype.buildMarkupElement = function (elementName, contents, listOfAttr
 			var separator = getAttributeValueSeparator(attribute.name);
 
 			// concatenating the attribute values
-			attribute.values.forEach(function forEachValue(value) {
+			attribute.values.forEach(function (value) {
 				attributeValue += value + separator;
 			});
 
