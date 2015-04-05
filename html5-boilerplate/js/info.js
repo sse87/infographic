@@ -1,18 +1,17 @@
 
-// Set true too console log debug messages
-var verbose = false;
+/*JS Lint helpers: */
+/*global $, Progress, animateTo, Key */
+/*jslint unused:false */
 
 var Info = function () {
 	
-	if (verbose) console.log('Constructor HERE!');
-	
 	// Private variables
-	var privateVar = "This is only to show example of a private variable";
+	var verbose = false;
 	var defaultSettings = {
 		quietPeriod: 500,
 		animationDuration: 1000,
-		easing: 'cubic-bezier(.7,.1,.3,.9)',
-		sectionVerticalMoveDistance: 0.01
+		easing: $.bez([0.7,0.1,0.3,0.9]),// Equivalent to cubic-bezier(0.7,0.1,0.3,0.9)
+		sectionVerticalMoveDistance: 0.25
 	};
 	
 	// Public variables
@@ -27,16 +26,40 @@ var Info = function () {
 	this.activeSection = this.sectionsEl.first();
 	this.activeSectionViewportY = 0;
 	
+	this.progress = new Progress();
+	
+	
+	
+	if (verbose) { console.log('Constructor HERE!'); }
 	
 	// Initialization
 	this.init = function () {
-		if (verbose) console.log('init() BEGINS!');
+		if (verbose) { console.log('init() BEGINS!'); }
 		
+		this.autoSectionWidth();
 		this.overwriteScroll();
 		this.bindResize();
 		this.bindKeydown();
 		
-		if (verbose) console.log('init() ENDS!');
+		this.progress.init();
+		
+		if (verbose) { console.log('init() ENDS!'); }
+	};
+	
+	this.autoSectionWidth = function () {
+		this.sectionsEl.each(function () {
+			var maxPosLeft = 0;
+			var maxWidth = 0;
+			$(this).find('> *').each(function () {
+				if (maxPosLeft < $(this).position().left) {
+					maxPosLeft = $(this).position().left;
+					maxWidth = $(this).width();
+				}
+			});
+			if ($(this).find('> *').length > 0 && (maxPosLeft + maxWidth) > $(this).width()) {
+				$(this).css('width', (maxPosLeft + maxWidth));
+			}
+		});
 	};
 	
 	this.bindResize = function () {
@@ -78,7 +101,7 @@ var Info = function () {
 				case Key.UP:
 				case Key.PAGE_UP:
 					e.preventDefault();
-					if (tag != 'input' && tag != 'textarea') base.moveUp();
+					if (tag !== 'input' && tag !== 'textarea') { base.moveUp(); }
 				break;
 				
 				case Key.K:
@@ -87,19 +110,19 @@ var Info = function () {
 				case Key.PAGE_DOWN:
 				case Key.SPACE:
 					e.preventDefault();
-					if (tag != 'input' && tag != 'textarea') base.moveDown();
+					if (tag !== 'input' && tag !== 'textarea') { base.moveDown(); }
 				break;
 				
 				case Key.A:
 				case Key.LEFT:
 					e.preventDefault();
-					if (tag != 'input' && tag != 'textarea') base.moveLeft();
+					if (tag !== 'input' && tag !== 'textarea') { base.moveLeft(); }
 				break;
 				
 				case Key.D:
 				case Key.RIGHT:
 					e.preventDefault();
-					if (tag != 'input' && tag != 'textarea') base.moveRight();
+					if (tag !== 'input' && tag !== 'textarea') { base.moveRight(); }
 				break;
 				
 			}
@@ -148,20 +171,27 @@ var Info = function () {
 		//console.log('moveWithinActiveSection(' + direction + '); HERE!');
 		var base = this;
 		
-		if (!base.activeSection) return;
+		if (!base.activeSection) { return; }
 		
 		var activeSectionWidth = $(base.activeSection).width();
 		//console.log('activeSectionWidth:' + activeSectionWidth + ' - windowWidth:' + base.windowWidth);
 		if (activeSectionWidth > base.windowWidth) {
 			
 			base.activeSectionViewportY += (direction === 'right' ? 1 : -1) * base.windowWidth * defaultSettings.sectionVerticalMoveDistance;
+			//console.log('if (' + base.activeSectionViewportY + ' < 0): ' + (base.activeSectionViewportY < 0).toString());
+			//console.log('else if (' + base.activeSectionViewportY + ' > ' + (activeSectionWidth - base.windowWidth) + '): ' + (base.activeSectionViewportY > (activeSectionWidth - base.windowWidth).toString()));
 			if (base.activeSectionViewportY < 0) {
 				base.activeSectionViewportY = 0;
 			} else if (base.activeSectionViewportY > (activeSectionWidth - base.windowWidth)) {
 				base.activeSectionViewportY = activeSectionWidth - base.windowWidth;
 			}
 			
+			// Move section view
 			$(base.activeSection).css('transform', 'translate3d(' + (-1 * base.activeSectionViewportY) + 'px,0,0)');
+			
+			// Calculate the active section progress
+			var maxProgress = activeSectionWidth - base.windowWidth;
+			this.progress.setProgress( base.activeSectionViewportY / maxProgress );
 			
 		}
 		
@@ -185,7 +215,7 @@ var Info = function () {
 		var targetPos = mainWindowTop;
 		var thisSectionPos = 0;
 		if (direction === 'down') {
-			for (var i = 0; (targetPos == mainWindowTop && i < base.sectionsEl.length); i++) {
+			for (var i = 0; (targetPos === mainWindowTop && i < base.sectionsEl.length); i++) {
 				
 				thisSectionPos = $(base.sectionsEl[i]).position().top;
 				if (targetPos < thisSectionPos) {
@@ -200,7 +230,7 @@ var Info = function () {
 			}
 		}
 		else if (direction === 'up') {
-			for (var k = base.sectionsEl.length - 1; (targetPos == mainWindowTop && k >= 0); k--) {
+			for (var k = base.sectionsEl.length - 1; (targetPos === mainWindowTop && k >= 0); k--) {
 				
 				thisSectionPos = $(base.sectionsEl[k]).position().top;
 				if (targetPos > thisSectionPos) {
@@ -215,16 +245,6 @@ var Info = function () {
 		animateTo({ position: (targetPos - offset) });
 	};
 	
+	
+	
 };
-/*JS Lint helpers: */
-/*global $, Info */
-/*jslint unused:false */
-
-$(document).ready(function () {
-	
-	setTimeout(function() {
-		var info = new Info();
-		info.init();
-	}, 100);
-	
-});
