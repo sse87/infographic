@@ -78,7 +78,7 @@ var attributes = [
 var butt = buttstuff.buildMarkupElement("div", "penis", attributes);
 
 
-$('.main-content').append(butt);
+//$('.main-content').append(butt);
 
 
 console.log(butt);
