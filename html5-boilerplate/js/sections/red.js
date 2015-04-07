@@ -38,7 +38,7 @@ $(document).ready(function () {
 	
 	arrText.forEach(function (text, i) {
 		$('<p></p>', {
-			'class': 'box nr' + i,
+			'class': 'card nr' + i,
 			'html': text
 		}).css({
 			'left': (50 + (i * 300)) + 'px'

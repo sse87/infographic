@@ -5,13 +5,18 @@
 	width: 100%;
 }
 
-#red p.box {
+#red p.card {
+	background-color: #FF5252;/* Red: A200 */
+	border-radius: 2px;
+	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+	color: #FFF;
+	padding: 16px;
 	position: absolute;
 	width: 250px;
 }
-#red p.box:nth-child(2n+1) {
-	top: 35%;
+#red p.card:nth-child(2n+1) {
+	top: 30%;
 }
-#red p.box:nth-child(2n) {
-	bottom: 35%;
+#red p.card:nth-child(2n) {
+	bottom: 30%;
 }
