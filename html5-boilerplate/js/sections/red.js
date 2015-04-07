@@ -31,7 +31,8 @@ $(document).ready(function () {
 	
 	var base = $('<section></section>', {
 		'id': 'red',
-		'data-header-color': '#C62828'// Red: 800
+		'data-header-bg-color': '#C62828',// Red: 800
+		'data-header-color': '#FFF3E0'
 	});
 	$('.main-content').append(base);
 	

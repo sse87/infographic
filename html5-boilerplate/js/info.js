@@ -248,10 +248,12 @@ var Info = function () {
 	};
 	
 	this.animateHeaderColor = function () {
+		var headerBackgroundColor = $(this.activeSection).attr('data-header-bg-color');
 		var headerColor = $(this.activeSection).attr('data-header-color');
-		console.log('headerColor: ' + headerColor);
-		
-		this.headerEl.animate({ 'background-color': headerColor }, 1000, $.bez([0.7,0.1,0.3,0.9]));
+		this.headerEl.animate({
+			'background-color': headerBackgroundColor,
+			'color': headerColor
+		}, 1000, $.bez([0.7,0.1,0.3,0.9]));
 	};
 	
 	

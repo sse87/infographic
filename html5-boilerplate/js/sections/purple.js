@@ -5,7 +5,8 @@ $(document).ready(function () {
 	
 	var base = $('<section></section>', {
 		'id': 'purple',
-		'data-header-color': '#4527A0'// Deep Purple: 800
+		'data-header-bg-color': '#4527A0',// Deep Purple: 800
+		'data-header-color': '#FFF3E0'
 	});
 	$('.main-content').append(base);
 	
