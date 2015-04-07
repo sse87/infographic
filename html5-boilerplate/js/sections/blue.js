@@ -5,8 +5,7 @@ $(document).ready(function () {
 	
 	var base = $('<section></section>', {
 		'id': 'blue',
-		'class': 'some three classes',
-		'style': 'height: 1000px;'
+		'data-header-color': '#0277BD'// Light Blue: 800
 	});
 	$('.main-content').append(base);
 	

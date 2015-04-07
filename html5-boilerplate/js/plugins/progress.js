@@ -32,7 +32,7 @@ var Progress = function () {
 	this.init = function () {
 		// Wrapper
 		this.progressWrapperEl = $('<div class="progress-wrapper"></div').css({
-			'background-color': '#000000',
+			'background-color': 'transparent',
 			'bottom': '0',
 			'height': '10px',
 			'position': 'absolute',
@@ -40,7 +40,7 @@ var Progress = function () {
 		}).appendTo('html > body > header');
 		// Progress bar
 		this.progressEl = $('<div class="progress"></div>').css({
-			'background-color': '#ff0000',
+			'background-color': '#E65100',
 			'height': '10px',
 			'transition': 'width 1s cubic-bezier(0.7,0.1,0.3,0.9) 0s',
 			'width': '0%'

@@ -1,4 +1,7 @@
 
+/* Colors: http://www.google.com/design/spec/style/color.html */
 #black {
+	background-color: #546E7A;/* Blue Grey: 600 */
+	color: #FFF;
 	width: 100%;
 }

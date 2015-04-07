@@ -1,4 +1,17 @@
 
+/* Colors: http://www.google.com/design/spec/style/color.html */
 #red {
+	background-color: #FFCDD2;/* Red: 100 */
 	width: 100%;
+}
+
+#red p.box {
+	position: absolute;
+	width: 250px;
+}
+#red p.box:nth-child(2n+1) {
+	top: 35%;
+}
+#red p.box:nth-child(2n) {
+	bottom: 35%;
 }

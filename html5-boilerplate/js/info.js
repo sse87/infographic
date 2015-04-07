@@ -11,10 +11,11 @@ var Info = function () {
 		quietPeriod: 500,
 		animationDuration: 1000,
 		easing: $.bez([0.7,0.1,0.3,0.9]),// Equivalent to cubic-bezier(0.7,0.1,0.3,0.9)
-		sectionVerticalMoveDistance: 0.25
+		sectionVerticalMoveDistance: 0.5
 	};
 	
 	// Public variables
+	this.headerEl = $('body > header');
 	this.headerHeight = $('body > header').height();
 	this.windowHeight = $(window).height();
 	this.sectionHeight = this.windowHeight - this.headerHeight;
@@ -243,6 +244,14 @@ var Info = function () {
 		
 		//console.log('targetPos:' + targetPos + ' - offset:' + offset + ' - Animate to: ' + (targetPos - offset));
 		animateTo({ position: (targetPos - offset) });
+		base.animateHeaderColor();
+	};
+	
+	this.animateHeaderColor = function () {
+		var headerColor = $(this.activeSection).attr('data-header-color');
+		console.log('headerColor: ' + headerColor);
+		
+		this.headerEl.animate({ 'background-color': headerColor }, 1000, $.bez([0.7,0.1,0.3,0.9]));
 	};
 	
 	

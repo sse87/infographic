@@ -1,6 +1,6 @@
 
+/* Colors: http://www.google.com/design/spec/style/color.html */
 #yellow {
+	background-color: #FFE0B2;/* Orange: 100 */
 	width: 100%;
-    background-color: #FFE0B2;
-    color: #000000;
 }

@@ -3,17 +3,10 @@
 
 $(document).ready(function () {
 	
-
-//	var Utils = new Utils();
-
-
-
-
 	var base = $('<section></section>', {
 		'id': 'green',
-		'class': 'some three classes'
+		'data-header-color': '#00695C'// Teal: 800
 	});
-
 	$('.main-content').append(base);
 	
 	
