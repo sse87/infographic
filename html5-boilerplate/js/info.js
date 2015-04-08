@@ -37,15 +37,17 @@ var Info = function () {
 	this.init = function () {
 		if (verbose) { console.log('init() BEGINS!'); }
 		
+		// Initialize key variables, adjust sizes and bind events
 		this.autoSectionWidth();
 		this.overwriteScroll();
 		this.bindResize();
 		this.bindKeydown();
 		
+		// Initialize the active section progress bar
 		this.progress.init();
 		
-		this.activeSection = this.findClosestSection();
-		this.animateHeaderColor();
+		// Move to closest section
+		this.moveToSection();
 		
 		if (verbose) { console.log('init() ENDS!'); }
 	};
@@ -92,12 +94,12 @@ var Info = function () {
 				
 				case Key.HOME:
 					e.preventDefault();
-					animateTo({ position: 0 });
+					base.scrollToSection(base.sectionsEl.first());
 				break;
 				
 				case Key.END:
 					e.preventDefault();
-					animateTo({ position: base.footerPos });
+					base.scrollToSection(base.sectionsEl.last());
 				break;
 				
 				case Key.J:
@@ -203,14 +205,20 @@ var Info = function () {
 	
 	
 	this.moveDown = function () {
-		this.moveToNextSection('down');
+		this.moveToSection('down');
 	};
 	this.moveUp = function () {
-		this.moveToNextSection('up');
+		this.moveToSection('up');
 	};
-	// This function can be used to get upper above section and below section and replace core function of moveToNextSection
-	this.findClosestSection = function () {
+	this.moveToSection = function (input) {
 		var base = this;
+		
+		var direction = null;
+		if (input === 'down') {
+			direction = 'down';
+		} else if (input === 'up') {
+			direction = 'up';
+		}
 		
 		// Calculate mainWindowTop and remember to include the offset (headerHeight)
 		var mainWindowTop = $(document).scrollTop() + base.headerHeight;
@@ -229,65 +237,46 @@ var Info = function () {
 		// After this loop if the currIndex is not set then we can find out which one is closest,
 		// the above section border or the below section border.
 		
-		// If currIndex is not set, calculate closer index and set that to current
-		if (currIndex === -1 && indexBefore !== indexAfter) {
-			// If for some reason one of them is not set, then choose the other
-			if (indexBefore === -1 || indexAfter === -1) {
-				// This math formula will give the one that has value
-				currIndex = indexBefore + indexAfter + 1;
-			} else {
-				// Calculate difference
-				var diffAbove = Math.abs( mainWindowTop - $(base.sectionsEl[indexBefore]).position().top );
-				var diffBelow = Math.abs( mainWindowTop - $(base.sectionsEl[indexAfter]).position().top );
-				// If above distance is smaller (closer) or equal, then choose above
-				if (diffAbove < diffBelow || diffAbove === diffBelow) {
-					currIndex = indexBefore;
-				} else if (diffAbove > diffBelow) {
-					currIndex = indexAfter;
+		if (direction === 'up' && indexBefore !== -1) {// Check if overwrite to above index
+			currIndex = indexBefore;
+		} else if (direction === 'down' && indexAfter !== -1) {// Check if overwrite to below index
+			currIndex = indexAfter;
+		} else {// If direction is not 'up' nor 'down' then select closest section
+			
+			// If currIndex is not set, calculate closer index and set that to current
+			if (currIndex === -1 && indexBefore !== indexAfter) {
+				// If for some reason one of them is not set, then choose the other
+				if (indexBefore === -1 || indexAfter === -1) {
+					// This math formula will give the one that has value
+					currIndex = indexBefore + indexAfter + 1;
+				} else {
+					// Calculate difference
+					var diffAbove = Math.abs( mainWindowTop - $(base.sectionsEl[indexBefore]).position().top );
+					var diffBelow = Math.abs( mainWindowTop - $(base.sectionsEl[indexAfter]).position().top );
+					// If above distance is smaller (closer) or equal, then choose above
+					if (diffAbove < diffBelow || diffAbove === diffBelow) {
+						currIndex = indexBefore;
+					} else if (diffAbove > diffBelow) {
+						currIndex = indexAfter;
+					}
 				}
 			}
+			
 		}
-		return base.sectionsEl[currIndex];
+		
+		var targetSection = base.sectionsEl[currIndex];
+		if (currIndex === -1) {
+			targetSection = base.sectionsEl.first();
+		}
+		base.scrollToSection(targetSection);
 	};
-	this.moveToNextSection = function (direction) {
-		//console.log('moveToNextSection(' + direction + '); HERE!');
+	this.scrollToSection = function (section) {
 		var base = this;
 		
-		var offset = base.headerHeight;
-		var mainWindowTop = $(document).scrollTop() + offset;
-		//console.log('#### mainWindowTop: ' + mainWindowTop);
+		base.activeSection = section;
 		
-		var targetPos = mainWindowTop;
-		var thisSectionPos = 0;
-		if (direction === 'down') {
-			for (var i = 0; (targetPos === mainWindowTop && i < base.sectionsEl.length); i++) {
-				
-				thisSectionPos = $(base.sectionsEl[i]).position().top;
-				if (targetPos < thisSectionPos) {
-					targetPos = thisSectionPos;
-					this.activeSection = base.sectionsEl[i];
-				}
-				//console.log('     thisSectionPos[' + i + ']: ' + thisSectionPos + ' - targetPos: ' + targetPos);
-			}
-			// This is a hack to be able to scroll to bottom
-			if (targetPos === mainWindowTop) {
-				targetPos += base.sectionHeight;
-			}
-		}
-		else if (direction === 'up') {
-			for (var k = base.sectionsEl.length - 1; (targetPos === mainWindowTop && k >= 0); k--) {
-				
-				thisSectionPos = $(base.sectionsEl[k]).position().top;
-				if (targetPos > thisSectionPos) {
-					targetPos = thisSectionPos;
-					this.activeSection = base.sectionsEl[k];
-				}
-				//console.log('     thisSectionPos[' + i + ']: ' + thisSectionPos + ' - targetPos: ' + targetPos);
-			}
-		}
-		
-		//console.log('targetPos:' + targetPos + ' - offset:' + offset + ' - Animate to: ' + (targetPos - offset));
-		animateTo({ position: (targetPos - offset) });
+		var targetPos = $(base.activeSection).position().top;
+		animateTo({ position: (targetPos - base.headerHeight) });
 		base.animateHeaderColor();
 	};
 	
