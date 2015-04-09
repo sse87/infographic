@@ -13,7 +13,7 @@ $(document).ready(function () {
 	
 	$('<p class="box" style="left: 50px;top: 200px;">Zombie art</p>').appendTo(base);
 	
-	$('<div /></div>', {
+	$('<div></div>', {
 		'class': 'zombie',
 		'style': 'left: 150px;bottom: 10%;background-image: url("img/zombies/zombie-01.jpg");'
 	}).appendTo(base);

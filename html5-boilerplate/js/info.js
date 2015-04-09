@@ -202,6 +202,11 @@ var Info = function () {
 		}
 		
 	};
+	this.resetActiveSection = function (section) {
+		this.activeSectionViewportX = 0;
+		$(section).css('transform', 'translate3d(0,0,0)');
+		this.progress.setProgress(0);
+	};
 	
 	
 	this.moveDown = function () {
@@ -273,6 +278,10 @@ var Info = function () {
 	this.scrollToSection = function (section) {
 		var base = this;
 		
+		var prevSection = base.activeSection;
+		setTimeout(function() {
+			base.resetActiveSection(prevSection);
+		}, 1000);
 		base.activeSection = section;
 		
 		var targetPos = $(base.activeSection).position().top;
