@@ -82,8 +82,6 @@ body > header {
 }
 
 body > footer {
-	background: url("../img/penises/first-penis.png") no-repeat scroll 10% 100% #FFF;
-	background-size: contain;
 	bottom: 0;
 	height: 300px;
 	left: 0;

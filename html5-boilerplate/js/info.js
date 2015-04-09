@@ -17,10 +17,10 @@ var Info = function () {
 	// Public variables
 	this.headerEl = $('body > header');
 	this.headerHeight = $('body > header').height();
+	this.footerHeight = $('body > footer').height();
 	this.windowHeight = $(window).height();
 	this.sectionHeight = this.windowHeight - this.headerHeight;
 	this.sectionsEl = $('.main-content section');
-	this.footerPos = $('.main-content section').last().position().top + this.sectionHeight;
 	this.windowWidth = $(window).width();
 	
 	// High priority bug: If user refresh on mid site, has to init the active section
@@ -75,9 +75,9 @@ var Info = function () {
 		$(window).resize(function () {
 			base.headerHeight = $('body > header').height();
 			base.windowHeight = $(window).height();
+			base.footerHeight = $('body > footer').height();
 			base.sectionHeight = base.windowHeight - base.headerHeight;
 			base.sectionsEl.css({ 'height': base.sectionHeight });
-			base.footerPos = $('.main-content section').last().position().top + base.sectionHeight;
 			this.windowWidth = $(window).width();
 		});
 		
@@ -99,7 +99,7 @@ var Info = function () {
 				
 				case Key.END:
 					e.preventDefault();
-					base.scrollToSection(base.sectionsEl.last());
+					base.scrollToBottom();
 				break;
 				
 				case Key.J:
@@ -244,8 +244,13 @@ var Info = function () {
 		
 		if (direction === 'up' && indexBefore !== -1) {// Check if overwrite to above index
 			currIndex = indexBefore;
-		} else if (direction === 'down' && indexAfter !== -1) {// Check if overwrite to below index
-			currIndex = indexAfter;
+		} else if (direction === 'down') {// Check if overwrite to below index
+			if (indexAfter === -1) {// That means that active section is the last, so footer is next
+				base.scrollToBottom();
+				return;
+			} else {
+				currIndex = indexAfter;
+			}
 		} else {// If direction is not 'up' nor 'down' then select closest section
 			
 			// If currIndex is not set, calculate closer index and set that to current
@@ -286,6 +291,20 @@ var Info = function () {
 		
 		var targetPos = $(base.activeSection).position().top;
 		animateTo({ position: (targetPos - base.headerHeight) });
+		base.animateHeaderColor();
+	};
+	this.scrollToBottom = function () {
+		var base = this;
+		
+		var prevSection = base.activeSection;
+		setTimeout(function() {
+			base.resetActiveSection(prevSection);
+		}, 1000);
+		base.activeSection = base.sectionsEl.last();
+		
+		var targetPos = $(base.activeSection).position().top;
+		console.log('animateTo(' + (targetPos - base.headerHeight + base.footerHeight) + ')');
+		animateTo({ position: (targetPos - base.headerHeight + base.footerHeight) });
 		base.animateHeaderColor();
 	};
 	
