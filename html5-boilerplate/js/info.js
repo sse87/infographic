@@ -56,14 +56,16 @@ var Info = function () {
 		this.sectionsEl.each(function () {
 			var maxPosLeft = 0;
 			var maxWidth = 0;
+			var marginRight = 100;
 			$(this).find('> *').each(function () {
 				if (maxPosLeft < $(this).position().left) {
 					maxPosLeft = $(this).position().left;
-					maxWidth = $(this).width();
+					maxWidth = $(this).outerWidth();
 				}
 			});
-			if ($(this).find('> *').length > 0 && (maxPosLeft + maxWidth) > $(this).width()) {
-				$(this).css('width', (maxPosLeft + maxWidth));
+			var sectionWidth = maxPosLeft + maxWidth + marginRight;
+			if ($(this).find('> *').length > 0 && sectionWidth > $(this).width()) {
+				$(this).css('width', sectionWidth + 'px');
 			}
 		});
 	};
@@ -303,7 +305,6 @@ var Info = function () {
 		base.activeSection = base.sectionsEl.last();
 		
 		var targetPos = $(base.activeSection).position().top;
-		console.log('animateTo(' + (targetPos - base.headerHeight + base.footerHeight) + ')');
 		animateTo({ position: (targetPos - base.headerHeight + base.footerHeight) });
 		base.animateHeaderColor();
 	};
