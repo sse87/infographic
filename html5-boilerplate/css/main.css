@@ -68,6 +68,7 @@ textarea { resize: vertical; }
 
 body {
 	color: 000;
+	font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
 }
 body > header {
 	background-color: #FFF;
@@ -79,6 +80,15 @@ body > header {
 	right: 0;
 	top: 0;
 	z-index: 1;
+}
+body > header .actions {
+	display: none;/* set this feature on hold */
+	position: absolute;
+	right: 200px;
+	bottom: 1px;
+}
+body > header .actions .fab {
+	display: inline-block;
 }
 
 body > footer {
@@ -121,16 +131,27 @@ body > footer {
 
 
 
+.fab {
+	border-radius: 50%;
+	box-shadow: 2px 3px 3px 0 rgba(41, 41, 41, 0.3);
+	height: 56px;
+	width: 56px;
+}
+
+
+
 .card {
 	background-color: #FFF;
-	border-radius: 2px;
+	border-radius: 5px;
 	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
 	color: #000;
 	padding: 16px;
 	position: absolute;
 	width: 250px;
 }
-
+.card.title {
+	font-size: 1.8em;
+}
 
 
 

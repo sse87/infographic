@@ -5,6 +5,10 @@
 	width: 100%;
 }
 
+#green .card {
+	background-color: #00BFA5;
+}
+
 #green .zombie {
 	background: none no-repeat scroll 0 0 transparent;
 	background-size: contain;

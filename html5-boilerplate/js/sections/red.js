@@ -1,6 +1,7 @@
 
 // Text taken from https://www.youtube.com/watch?v=rACeLDeJDIM
 var arrText = [
+	"Why Does The Government Have A Zombie Apocalypse Plan?",
 	"In 2014 Foreign Policy magazine uncovered a US Military document detailing a contingency plan against a Zombie Apocalypse.",
 	"Carrying a disclaimer starting 'This is not a joke', it painstakingly plots how the US would react if it faced swarms of the undead.",
 	"Why Does The Government Have A Zombie Apocalypse Plan?",
@@ -28,7 +29,7 @@ $(document).ready(function () {
 	
 	arrText.forEach(function (text, i) {
 		$('<p></p>', {
-			'class': 'card nr' + i,
+			'class': 'card nr' + i + (i === 0 ? ' title' : ''),
 			'html': text
 		}).css({
 			'left': (100 + (i * 350)) + 'px'
