@@ -10,9 +10,8 @@ $(document).ready(function () {
 	});
 	$('.main-content').append(base);
 	
-	
-	$('<h1>Yellow, this is the yellow section</h1>').appendTo(base);
-	$('<p>Hi, i\'m a paragraph!</p>').appendTo(base);
+	var wrapper = $('<div></div>', { 'class': 'limit', 'style': 'margin-top: 150px;' }).appendTo(base);
+	$('<h1>Yellow, this is the yellow section</h1>').appendTo(wrapper);
 	
 });
 
