@@ -11,7 +11,7 @@ $(document).ready(function () {
 	$('.main-content').append(base);
 	
 	var wrapper = $('<div></div>', { 'class': 'limit', 'style': 'margin-top: 150px;' }).appendTo(base);
-	$('<h1>Yellow, this is the yellow section</h1>').appendTo(wrapper);
+	$('<h1>About this project</h1>').appendTo(wrapper);
 	
 });
 

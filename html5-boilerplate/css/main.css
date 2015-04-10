@@ -68,7 +68,7 @@ textarea { resize: vertical; }
 
 body {
 	color: 000;
-	font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+	font-family: 'Open Sans', sans-serif;
 }
 body > header {
 	background-color: #FFF;
