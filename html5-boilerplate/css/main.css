@@ -100,7 +100,10 @@ body > footer {
 	text-align: center;
 	z-index: -1;
 }
-
+body > footer p {
+	margin-top: 110px;
+	font-size: 1.4em;
+}
 
 
 /* To fix margin overflow */
