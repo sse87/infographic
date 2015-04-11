@@ -13,9 +13,8 @@ $(document).ready(function () {
 	var wrapper = $('<div></div>', { 
         'class': 'limit limit-body', 
         }).appendTo(base);
-	$('<h1>Hello, this is the black section</h1>').appendTo(wrapper);
-	
-	// ...
+	$('<canvas id="chart-area" width="300" height="300"/>').appendTo(wrapper);
+
 	
 });
 
