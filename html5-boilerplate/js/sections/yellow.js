@@ -23,17 +23,17 @@ $(document).ready(function () {
 		labels : ["January","February","March","April","May","June","July"],
 		datasets : [
 			{
-				fillColor : "rgba(220,220,220,0.5)",
-				strokeColor : "rgba(220,220,220,0.8)",
-				highlightFill: "rgba(220,220,220,0.75)",
-				highlightStroke: "rgba(220,220,220,1)",
+				fillColor : "rgba(255,183,77,0.5)",
+				strokeColor : "rgba(255,183,77,0.8)",
+				highlightFill: "rgba(255,183,77,0.75)",
+				highlightStroke: "rgba(255,183,77,1)",
 				data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
 			},
 			{
-				fillColor : "rgba(151,187,205,0.5)",
-				strokeColor : "rgba(151,187,205,0.8)",
-				highlightFill : "rgba(151,187,205,0.75)",
-				highlightStroke : "rgba(151,187,205,1)",
+				fillColor : "rgba(245,124,0,0.5)",
+				strokeColor : "rgba(245,124,0,0.8)",
+				highlightFill : "rgba(245,124,0,0.75)",
+				highlightStroke : "rgba(245,124,0,1)",
 				data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
 			}
 		]
