@@ -40,3 +40,5 @@ To run execute grunt command:
 ```
 grunt
 ```
+
+.
