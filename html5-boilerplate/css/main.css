@@ -12,6 +12,8 @@
 
 html { color: #222222; font-size: 1em; line-height: 1.4; }
 
+*{ font-family:Open Sans, 'sans-serif';}
+
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -116,6 +118,10 @@ body > footer p {
 	width: 100%;
 }
 
+.limit-body {
+    margin-top: 100px;
+}
+
 
 
 .main-content {
@@ -133,6 +139,13 @@ body > footer p {
 }
 
 
+.main-title {
+    font-weight: 600;
+}
+
+.main-title-sub {
+    font-weight: 300;
+}
 
 .fab {
 	border-radius: 50%;
@@ -140,8 +153,6 @@ body > footer p {
 	height: 56px;
 	width: 56px;
 }
-
-
 
 .card {
 	background-color: #FFF;

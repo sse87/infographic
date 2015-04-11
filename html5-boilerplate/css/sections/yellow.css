@@ -4,3 +4,9 @@
 	background-color: #FFE0B2;/* Orange: 100 */
 	width: 100%;
 }
+
+.yellow-title {
+    font-weight: 300;
+    font-size: 3.2em;
+    text-align: center;
+}

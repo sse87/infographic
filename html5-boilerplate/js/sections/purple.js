@@ -10,7 +10,8 @@ $(document).ready(function () {
 	});
 	$('.main-content').append(base);
 	
-	var wrapper = $('<div></div>', { 'class': 'limit', 'style': 'margin-top: 150px;' }).appendTo(base);
+        var wrapper = $('<div></div>', { 
+            'class': 'limit limit-body' }).appendTo(base);
 	$('<h1>Hello, this is the purple section</h1>').appendTo(wrapper);
 	
 	// ...
