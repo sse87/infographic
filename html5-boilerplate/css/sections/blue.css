@@ -1,7 +1,7 @@
 
 /* Colors: http://www.google.com/design/spec/style/color.html */
 #blue {
-	background-color: #B3E5FC;/* Light Blue: 100 */
+	background-color: #FFF;/* Light Blue: 100 #B3E5FC */
 	width: 100%;
 }
 
@@ -15,4 +15,39 @@
 	height: 450px;
 	position: absolute;
 	width: 450px;
+}
+
+#blue nav {
+	background-color: #81C784;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+#blue nav .wrapper {
+	border: 2px solid #388E3C;
+	border-left: 0px;
+	display: inline-block;
+	position: relative;
+	width: 10%;
+}
+#blue nav .wrapper:first-child {
+	border-left: 2px solid #388E3C;
+}
+#blue nav .wrapper:before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+}
+#blue nav .wrapper a {
+	background: none no-repeat scroll 50% 50% #E8F5E9;
+	background-size: contain;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: -5px;/* Don't ask */
+	left: 0;
+}
+#blue nav .wrapper a:hover {
+	background-color: #C8E6C9;
 }

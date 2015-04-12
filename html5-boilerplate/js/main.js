@@ -1,6 +1,6 @@
 
 /*JS Lint helpers: */
-/*global $, Info */
+/*global $, Info, Chart */
 /*jslint unused:false */
 
 $(document).ready(function () {
@@ -9,7 +9,7 @@ $(document).ready(function () {
 		var info = new Info();
 		info.init();
 	}, 100);
-    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+    var randomScalingFactor = function(){ return Math.round(Math.random()*100); };
 
     var pieData = [
             {
