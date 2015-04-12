@@ -9,75 +9,115 @@ $(document).ready(function () {
 		var info = new Info();
 		info.init();
 	}, 100);
-    var randomScalingFactor = function(){ return Math.round(Math.random()*100); };
+    var randomScalingFactor = function(){ return Math.round(Math.random()*100);};
 
     var pieData = [
             {
-                value: 300,
+                value: 150378,
                 color:"#F7464A",
                 highlight: "#FF5A5E",
-                label: "Red"
+                label: "Asia"
             },
             {
-                value: 50,
+                value: 89032,
                 color: "#46BFBD",
                 highlight: "#5AD3D1",
-                label: "Green"
+                label: "Europe"
             },
             {
-                value: 100,
+                value: 100394,
                 color: "#FDB45C",
                 highlight: "#FFC870",
-                label: "Yellow"
+                label: "North America"
             },
             {
-                value: 40,
+                value: 54093,
                 color: "#949FB1",
                 highlight: "#A8B3C5",
-                label: "Grey"
+                label: "Africa"
             },
             {
-                value: 120,
+                value: 54093,
+                color: "#689F38",
+                highlight: "#8BC34A",
+                label: "Oceania"
+            },
+            {
+                value: 37298,
                 color: "#4D5360",
                 highlight: "#616774",
-                label: "Dark Grey"
+                label: "South America"
             }
-
         ];
 
     var barChartData = {
-        labels : ["January","February","March","April","May","June","July","August","September","October","November","December"],
+        labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct"],
         datasets : [
             {
                 fillColor : "rgba(255,183,77,0.5)",
                 strokeColor : "rgba(255,183,77,0.8)",
                 highlightFill: "rgba(255,183,77,0.75)",
                 highlightStroke: "rgba(255,183,77,1)",
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
             },
             {
                 fillColor : "rgba(245,124,0,0.5)",
                 strokeColor : "rgba(245,124,0,0.8)",
                 highlightFill : "rgba(245,124,0,0.75)",
                 highlightStroke : "rgba(245,124,0,1)",
-                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
             }
         ]
 
     };
 
     window.onload = function(){
-		var info = new Info();
 
         var ctx1 = document.getElementById("chart-area").getContext("2d");
         window.myPie = new Chart(ctx1).Pie(pieData);
 
-		var ctx2 = document.getElementById("canvas").getContext("2d");
-		window.myBar = new Chart(ctx2).Bar(barChartData, {
+        var pieCanvas = document.getElementById("chart-pie-1");
+        var ctx2 = pieCanvas.getContext("2d");
+        window.myPie = new Chart(ctx2).Doughnut(pieData, {
+            responsive: false,
+            tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+        });
+
+        var helpers = Chart.helpers;
+        var legendHolder = document.createElement('div');
+        legendHolder.innerHTML = window.myPie.generateLegend();
+        // Include a html legend template after the module doughnut itself
+        helpers.each(legendHolder.firstChild.childNodes, function(legendNode, index){
+            helpers.addEvent(legendNode, 'mouseover', function(){
+                var activeSegment = window.myPie.segments[index];
+                activeSegment.save();
+                activeSegment.fillColor = activeSegment.highlightColor;
+                window.myPie.showTooltip([activeSegment]);
+                activeSegment.restore();
+            });
+        });
+        helpers.addEvent(legendHolder.firstChild, 'mouseout', function(){
+            window.myPie.draw();
+        });
+        pieCanvas.parentNode.appendChild(legendHolder.firstChild);
+
+        var ctx3 = document.getElementById("chart-bar-1").getContext("2d");
+        window.myBar = new Chart(ctx3).Bar(barChartData, {
             scaleShowHorizontalLines: true,
             scaleShowVerticalLines: true,
             scaleBeginAtZero : true,
-			responsive : true
+            responsive : false
+        });
+
+/*
+		var ctx4 = document.getElementById("chart-bar-2").getContext("2d");
+		window.myBar = new Chart(ctx4).Bar(barChartData, {
+            scaleShowHorizontalLines: true,
+            scaleShowVerticalLines: true,
+            scaleBeginAtZero : true,
+			responsive : false
 		});
+        */
     };
 });

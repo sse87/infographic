@@ -13,7 +13,9 @@ $(document).ready(function () {
 	var wrapper = $('<div></div>', { 
         'class': 'limit limit-body', 
         }).appendTo(base);
-	$('<canvas id="chart-area" width="300" height="300"/>').appendTo(wrapper);
+	$('<div> '+ 
+    '<canvas id="chart-area" width="400" height="600"/>' +
+    '</div>').appendTo(wrapper);
 
 	
 });
