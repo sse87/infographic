@@ -27,7 +27,7 @@ $(document).ready(function () {
 
 			image: 'weapon2.png',
 			name: 'Auto Shotgun',
-			text: 'The Auto Shotgun is excellent against hordes of enemies, especially in tight areas like houses or hallways, because they can take out several enemies in a few good shots.',
+			description: 'The Auto Shotgun is excellent against hordes of enemies, especially in tight areas like houses or hallways, because they can take out several enemies in a few good shots.',
 			type: 'Firearm',
 			stats: {
 				accuracy: 76,
@@ -124,7 +124,7 @@ $(document).ready(function () {
 
 			image: 'weapon4.png',
 			name: 'Chainsaw',
-			description: 'Realize every zombie killer’s dream with the ultimate in gore-splattering destruction. But the fun won’t last forever—once the gas gauge hits E (emptied), it’s useless',
+			description: 'Realize every zombie killer\'s dream with the ultimate in gore-splattering destruction. But the fun won\'t last forever&mdash;once the gas gauge hits E (emptied), it\'s useless',
 			type: 'Melee',
 			stats: {
 				weight: 7
@@ -204,16 +204,54 @@ $(document).ready(function () {
 
 	];
 	
+	
+	
 	var nav = $('<nav></nav>').appendTo(base);
 	weapons.forEach(function (weapon, i) {
 		var wrapper = $('<div></div>', {
 			'class': 'wrapper'
 		}).appendTo(nav);
 		$('<a></a>', {
-			'href': '#',
-			'id': 'weapon-' + i,
+			'href': '#weapon-' + i,
 			'style': 'background-image: url("img/weapons/' + weapon.image + '");'
 		}).appendTo(wrapper);
+	});
+	$('#blue nav a').click(function (e) {
+		e.preventDefault();
+		$('#blue .container').hide();
+		var index = $(this).attr('href').replace('#weapon-', '');
+		$('#blue .container').eq(index).show();
+	});
+	
+	
+	weapons.forEach(function (weapon, i) {
+		
+		var container = $('<div></div>', {
+			'class': 'container',
+			'id': 'weapon-' + i,
+			'style': 'display: none;'
+		}).appendTo(base);
+		
+		var column1 = $('<div></div>', {
+			'class': 'column'
+		}).appendTo(container);
+		$('<div></div>', {
+			'class': 'image',
+			'style': 'background-image: url("img/weapons/' + weapon.image + '");'
+		}).appendTo(column1);
+		$('<div></div>', {
+			'class': 'specs'
+		}).appendTo(column1);
+		
+		var column2 = $('<div></div>', {
+			'class': 'column'
+		}).appendTo(container);
+		$('<div></div>', {
+			'class': 'text',
+			'html': '<h2>%name%</h2><div class="type">%type%</div><div class="desc">%desc%</div>'
+				.replace('%name%', weapon.name).replace('%type%', weapon.type).replace('%desc%', weapon.description)
+		}).appendTo(column2);
+		
 	});
 	
 	/*

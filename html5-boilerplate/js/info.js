@@ -38,7 +38,7 @@ var Info = function () {
 		if (verbose) { console.log('init() BEGINS!'); }
 		
 		// Initialize key variables, adjust sizes and bind events
-		this.autoSectionWidth();
+		//this.autoSectionWidth();
 		this.overwriteScroll();
 		this.bindResize();
 		this.bindKeydown();

@@ -1,7 +1,7 @@
 
 /* Colors: http://www.google.com/design/spec/style/color.html */
 #blue {
-	background-color: #FFF;/* Light Blue: 100 #B3E5FC */
+	background-color: #E8F5E9;/* Light Blue: 100 #B3E5FC */
 	width: 100%;
 }
 
@@ -29,7 +29,7 @@
 	border-left: 0px;
 	display: inline-block;
 	position: relative;
-	width: 10%;
+	width: 5.71194%;
 }
 #blue nav .wrapper:first-child {
 	border-left: 2px solid #388E3C;
@@ -50,4 +50,35 @@
 }
 #blue nav .wrapper a:hover {
 	background-color: #C8E6C9;
+}
+
+#blue .container {
+	height: 90%;
+	position: relative;
+}
+#blue .container .column {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 50%;
+}
+#blue .container .column:nth-child(2n+1) { left: 0; }
+#blue .container .column:nth-child(2n) { right: 0; }
+#blue .container .column .image {
+	background: none no-repeat scroll 50% 50% transparent;
+	background-size: contain;
+	height: 50%
+}
+#blue .container .column .specs {
+	height: 50%
+}
+#blue .container .column .text {
+	padding: 20px;
+}
+#blue .container .column .text h2 {}
+#blue .container .column .text .type {
+	font-style: italic;
+}
+#blue .container .column .text .desc {
+	font-size: 1.2em;
 }
