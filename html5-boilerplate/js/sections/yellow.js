@@ -14,7 +14,7 @@ $(document).ready(function () {
         'class': 'limit limit-body' 
         }).appendTo(base);
 
-	$('<h1 class="yellow-title">Total deathcount</h1>').appendTo(wrapper);
+	$('<h1 class="yellow-title">Welcome back, survivor.</h1>').appendTo(wrapper);
 	$('<canvas id="canvas" height="190" width="600"></canvas>').appendTo(wrapper);
 
 });
