@@ -284,7 +284,6 @@ var Info = function () {
 		base.activeSection = section;
 		
 		var targetPos = $(base.activeSection).position().top;
-		console.log('animateTo: ' + (targetPos - base.headerHeight));
 		animateTo({ position: (targetPos - base.headerHeight) });
 		base.animateHeaderColor();
 	};
@@ -294,7 +293,6 @@ var Info = function () {
 		base.activeSection = base.sectionsEl.last();
 		
 		var targetPos = $(base.activeSection).position().top;
-		console.log('animateTo: ' + (targetPos - base.headerHeight + base.footerHeight));
 		animateTo({ position: (targetPos - base.headerHeight + base.footerHeight) });
 		base.animateHeaderColor();
 	};
