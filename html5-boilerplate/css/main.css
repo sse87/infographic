@@ -120,6 +120,7 @@ body > footer p {
 
 .limit-body {
     height: 100%;
+    position: relative;
 }
 .main-content {
 	background-color: #FFF;
