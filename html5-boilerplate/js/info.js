@@ -42,7 +42,9 @@ var Info = function () {
 		this.bindKeydown();
 		
 		// Move to closest section
-		this.moveToSection();
+		//this.moveToSection();
+		this.activeSection = this.detectCurrentSection();
+		this.animateHeaderColor();
 		
 		if (verbose) { console.log('init() ENDS!'); }
 	};
@@ -154,14 +156,60 @@ var Info = function () {
 	this.bindHeaderAnimationOnScroll = function () {
 		var base = this;
 		
-		$(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function (event) {
-			var windowPos = $(document).scrollTop() + base.headerHeight;
-			console.log('SCORLL: ' + windowPos);
+		var buffer = true;
+		var queue = false;
+		$(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll scroll', function (event) {
+			if (buffer) {
+				
+				base.activeSection = base.detectCurrentSection();
+				base.animateHeaderColor();
+				
+				buffer = false;
+				setTimeout(function() {
+					buffer = true;
+					if (queue) {
+						queue = false;
+						$(document).trigger('mousewheel');
+					}
+				}, 1000);
+			} else {
+				queue = true;
+			}
 		});
 		
 	};
 	
 	
+	this.detectCurrentSection = function () {
+		var base = this;
+		
+		// Calculate mainWindowTop and remember to include the offset (headerHeight)
+		var mainWindowTop = $(document).scrollTop() + base.headerHeight;
+		// Set the three value to help with the search
+		var indexBefore = -1, indexAfter = -1, currIndex = -1;
+		base.sectionsEl.each(function (i, section) {
+			var thisSectionPos = $(section).position().top;
+			if (mainWindowTop > thisSectionPos) {
+				indexBefore = i;
+			} else if (thisSectionPos === mainWindowTop) {
+				currIndex = i;
+			} else if (mainWindowTop < thisSectionPos && indexAfter === -1) {
+				indexAfter = i;
+			}
+		});
+		
+		if (currIndex === -1) {
+			if (indexBefore !== -1) {
+				currIndex = indexBefore;
+			} else {
+				// This should not happen but I keep this here if it ever does
+				console.error('This should not happen but I keep this here if it ever does!');
+				currIndex = 0;
+			}
+		}
+		
+		return base.sectionsEl[currIndex];
+	};
 	this.moveDown = function () {
 		this.moveToSection('down');
 	};
@@ -227,10 +275,7 @@ var Info = function () {
 			
 		}
 		
-		var targetSection = base.sectionsEl[currIndex];
-		if (currIndex === -1) {
-			targetSection = base.sectionsEl.first();
-		}
+		var targetSection = currIndex !== -1 ? base.sectionsEl[currIndex] : base.sectionsEl.first();
 		base.scrollToSection(targetSection);
 	};
 	this.scrollToSection = function (section) {
