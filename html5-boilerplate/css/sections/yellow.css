@@ -141,5 +141,6 @@
 .chart-container-pie {
     height: 300px;
     width: 420px;
+    float: right;
 }
 

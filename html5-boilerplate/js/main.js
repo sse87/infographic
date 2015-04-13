@@ -55,10 +55,10 @@ $(document).ready(function () {
         datasets : [
             {
                 label: "Zombie",
-                fillColor : "rgba(247,70,74,0.5)",
-                strokeColor : "rgba(247,70,74,0.8)",
-                highlightFill: "rgba(247,70,74,0.75)",
-                highlightStroke: "rgba(247,70,74,1)",
+                fillColor : "rgba(255,90,94,0.5)",
+                strokeColor : "rgba(255,90,94,0.8)",
+                highlightFill: "rgba(255,90,94,0.75)",
+                highlightStroke: "rgba(255,90,94,1)",
                 data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
             },
             {
@@ -119,7 +119,7 @@ $(document).ready(function () {
             scaleShowVerticalLines: true,
             scaleBeginAtZero : true,
             responsive : false,
-            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
         });
 /*
