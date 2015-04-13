@@ -26,6 +26,11 @@
     height: 100%;
 }
 
+#chart-bar-middle {
+    width: 100%;
+    height: 100%;
+}
+
 #chart-pie-1 {
     width: 100%;
     height: 100%;
@@ -51,7 +56,9 @@
     color: #FF9800;
     padding-right: 10px;
     padding-left: 10px;
+    padding-top: 40px;
     width: calc(100% - 20px);
+    height: calc(70%);
 }
 
 .chart-wrapper-bar {
@@ -93,6 +100,42 @@
   background-color: #fafafa;
 }
 .doughnut-legend li span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.line-legend {
+  list-style: none;
+  position: absolute;
+  right: 5%;
+  padding-top: 14%;
+  top: 0;
+}
+.line-legend li {
+  color: black;
+  display: inline;
+  padding-left: 30px;
+  position: relative;
+  margin-bottom: 4px;
+  margin-left: 4px;
+  border-radius: 5px;
+  padding: 2px 8px 2px 28px;
+  font-size: 14px;
+  cursor: default;
+  -webkit-transition: background-color 200ms ease-in-out;
+  -moz-transition: background-color 200ms ease-in-out;
+  -o-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+.line-legend li:hover {
+  background-color: #fafafa;
+}
+.line-legend li span {
   display: block;
   position: absolute;
   left: 0;
@@ -151,7 +194,10 @@
 
 .chart-container-middle {
     height: 300px;
-    width: 220px;
+    width: 300px;
+    margin: 0 auto;
+    position: absolute;
+    left: 39%;
 }
 
 .chart-container-pie {

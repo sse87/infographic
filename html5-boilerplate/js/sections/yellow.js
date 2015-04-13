@@ -23,7 +23,7 @@ $(document).ready(function () {
         '<div class="chart-body">' + 
             '<div class="chart-container">' + 
                 '<div class="chart-title">' + 
-                    '<span>Causes of death</span>' + 
+                    '<span>Human causes of death</span>' + 
                 '</div>' + 
                 '<div class="chart-wrapper chart-wrapper-bar">' + 
                     '<canvas id="chart-bar-1"></canvas>' + 
@@ -31,7 +31,7 @@ $(document).ready(function () {
             '</div>' + 
             '<div class="chart-container chart-container-middle">' + 
                 '<div class="chart-title">' + 
-                    '<span>Something else</span>' + 
+                    '<span>Zombie population</span>' + 
                 '</div>' + 
                 '<div class="chart-wrapper">' + 
                     '<canvas id="chart-bar-middle"></canvas>' + 
@@ -39,7 +39,7 @@ $(document).ready(function () {
             '</div>' + 
             '<div class="chart-container chart-container-pie">' + 
                 '<div class="chart-title">' + 
-                    '<span>Deaths by continent</span>' + 
+                    '<span>Human deaths by continent</span>' + 
                 '</div>' + 
                 '<div class="chart-wrapper chart-wrapper-pie">' + 
                     '<canvas id="chart-pie-1"></canvas>' + 

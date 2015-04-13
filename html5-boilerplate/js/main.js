@@ -81,6 +81,32 @@ $(document).ready(function () {
 
     };
 
+    var lineData = {
+        labels: ["2009", "2010", "2011", "2012", "2013", "2014", "2015"],
+        datasets: [
+            {
+                label: "Walkers",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [87300, 95039, 55387, 67109, 48928, 73847, 29837]
+            },
+            {
+                label: "Runners",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: [75384, 84398, 58347, 29387, 47837, 63982, 82398]
+            }
+        ]
+    };
+
     window.onload = function(){
 
         var ctx1 = document.getElementById("chart-area").getContext("2d");
@@ -113,6 +139,30 @@ $(document).ready(function () {
         pieCanvas.parentNode.appendChild(legendHolderPie.firstChild);
         /* ----------------------------- */
 
+        /* Middle chart in yellow */
+        var lineCanvas = document.getElementById("chart-bar-middle");
+        var lineChart = lineCanvas.getContext("2d");
+        window.myLine = new Chart(lineChart).Line(lineData, {
+            responsive : false,
+            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+        });
+        var legendHolderLine = document.createElement('div');
+        legendHolderLine.innerHTML = window.myLine.generateLegend();
+        helpers.each(legendHolderLine.firstChild.childNodes, function(legendNode, index){
+            helpers.addEvent(legendNode, 'mouseover', function(){
+                var activeSegment = window.myLine.segments[index];
+                activeSegment.save();
+                activeSegment.fillColor = activeSegment.highlightColor;
+                window.myLine.showTooltip([activeSegment]);
+                activeSegment.restore();
+            });
+        });
+        helpers.addEvent(legendHolderLine.firstChild, 'mouseout', function(){
+            window.myLine.draw();
+        });
+        lineCanvas.parentNode.appendChild(legendHolderLine.firstChild);
+        /* ---------------------- */
+
         /* Leftmost bar chart in yellow */
         var barCanvas = document.getElementById("chart-bar-1");
         var barChart = barCanvas.getContext("2d");
@@ -122,8 +172,8 @@ $(document).ready(function () {
             scaleBeginAtZero : true,
             responsive : false,
             legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
         });
+
         var legendHolderBar = document.createElement('div');
         legendHolderBar.innerHTML = window.myBar.generateLegend();
         helpers.each(legendHolderBar.firstChild.childNodes, function(legendNode, index){
