@@ -116,18 +116,6 @@ var Info = function () {
 					if (tag !== 'input' && tag !== 'textarea') { base.moveDown(); }
 				break;
 				
-			//	case Key.A:
-			//	case Key.LEFT:
-			//		e.preventDefault();
-			//		if (tag !== 'input' && tag !== 'textarea') { base.moveLeft(); }
-			//	break;
-				
-			//	case Key.D:
-			//	case Key.RIGHT:
-			//		e.preventDefault();
-			//		if (tag !== 'input' && tag !== 'textarea') { base.moveRight(); }
-			//	break;
-				
 			}
 		});
 		
@@ -173,48 +161,6 @@ var Info = function () {
 		
 	};
 	
-	/*
-	this.moveLeft = function () {
-		this.moveWithinActiveSection('left');
-	};
-	this.moveRight = function () {
-		this.moveWithinActiveSection('right');
-	};
-	this.moveWithinActiveSection = function (direction) {
-		//console.log('moveWithinActiveSection(' + direction + '); HERE!');
-		var base = this;
-		
-		if (!base.activeSection) { return; }
-		
-		var activeSectionWidth = $(base.activeSection).width();
-		//console.log('activeSectionWidth:' + activeSectionWidth + ' - windowWidth:' + base.windowWidth);
-		if (activeSectionWidth > base.windowWidth) {
-			
-			base.activeSectionViewportX += (direction === 'right' ? 1 : -1) * base.windowWidth * defaultSettings.sectionVerticalMoveDistance;
-			//console.log('if (' + base.activeSectionViewportX + ' < 0): ' + (base.activeSectionViewportX < 0).toString());
-			//console.log('else if (' + base.activeSectionViewportX + ' > ' + (activeSectionWidth - base.windowWidth) + '): ' + (base.activeSectionViewportX > (activeSectionWidth - base.windowWidth).toString()));
-			if (base.activeSectionViewportX < 0) {
-				base.activeSectionViewportX = 0;
-			} else if (base.activeSectionViewportX > (activeSectionWidth - base.windowWidth)) {
-				base.activeSectionViewportX = activeSectionWidth - base.windowWidth;
-			}
-			
-			// Move section view
-			$(base.activeSection).css('transform', 'translate3d(' + (-1 * base.activeSectionViewportX) + 'px,0,0)');
-			
-			// Calculate the active section progress
-			var maxProgress = activeSectionWidth - base.windowWidth;
-			this.progress.setProgress( base.activeSectionViewportX / maxProgress );
-			
-		}
-		
-	};
-	this.resetActiveSection = function (section) {
-		this.activeSectionViewportX = 0;
-		$(section).css('transform', 'translate3d(0,0,0)');
-		this.progress.setProgress(0);
-	};
-	*/
 	
 	this.moveDown = function () {
 		this.moveToSection('down');
@@ -290,10 +236,6 @@ var Info = function () {
 	this.scrollToSection = function (section) {
 		var base = this;
 		
-		//var prevSection = base.activeSection;
-		//setTimeout(function() {
-		//	base.resetActiveSection(prevSection);
-		//}, 1000);
 		base.activeSection = section;
 		
 		var targetPos = $(base.activeSection).position().top;
@@ -304,10 +246,6 @@ var Info = function () {
 	this.scrollToBottom = function () {
 		var base = this;
 		
-		//var prevSection = base.activeSection;
-		//setTimeout(function() {
-		//	base.resetActiveSection(prevSection);
-		//}, 1000);
 		base.activeSection = base.sectionsEl.last();
 		
 		var targetPos = $(base.activeSection).position().top;
