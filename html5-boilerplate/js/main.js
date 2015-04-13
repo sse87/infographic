@@ -54,6 +54,7 @@ $(document).ready(function () {
         labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct"],
         datasets : [
             {
+                label: "Suicide",
                 fillColor : "rgba(255,183,77,0.5)",
                 strokeColor : "rgba(255,183,77,0.8)",
                 highlightFill: "rgba(255,183,77,0.75)",
@@ -61,6 +62,7 @@ $(document).ready(function () {
                 data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
             },
             {
+                label: "Murder",
                 fillColor : "rgba(245,124,0,0.5)",
                 strokeColor : "rgba(245,124,0,0.8)",
                 highlightFill : "rgba(245,124,0,0.75)",
@@ -77,18 +79,18 @@ $(document).ready(function () {
         window.myPie = new Chart(ctx1).Pie(pieData);
 
         var pieCanvas = document.getElementById("chart-pie-1");
-        var ctx2 = pieCanvas.getContext("2d");
-        window.myPie = new Chart(ctx2).Doughnut(pieData, {
+        var pieChart = pieCanvas.getContext("2d");
+        window.myPie = new Chart(pieChart).Doughnut(pieData, {
             responsive: false,
             tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
             legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
         });
 
         var helpers = Chart.helpers;
-        var legendHolder = document.createElement('div');
-        legendHolder.innerHTML = window.myPie.generateLegend();
+        var legendHolderPie = document.createElement('div');
+        legendHolderPie.innerHTML = window.myPie.generateLegend();
         // Include a html legend template after the module doughnut itself
-        helpers.each(legendHolder.firstChild.childNodes, function(legendNode, index){
+        helpers.each(legendHolderPie.firstChild.childNodes, function(legendNode, index){
             helpers.addEvent(legendNode, 'mouseover', function(){
                 var activeSegment = window.myPie.segments[index];
                 activeSegment.save();
@@ -97,18 +99,44 @@ $(document).ready(function () {
                 activeSegment.restore();
             });
         });
-        helpers.addEvent(legendHolder.firstChild, 'mouseout', function(){
+        helpers.addEvent(legendHolderPie.firstChild, 'mouseout', function(){
             window.myPie.draw();
         });
-        pieCanvas.parentNode.appendChild(legendHolder.firstChild);
+        pieCanvas.parentNode.appendChild(legendHolderPie.firstChild);
 
-        var ctx3 = document.getElementById("chart-bar-1").getContext("2d");
-        window.myBar = new Chart(ctx3).Bar(barChartData, {
+        var barCanvas = document.getElementById("chart-bar-1");
+        var barChart = barCanvas.getContext("2d")
+        window.myBar = new Chart(barChart).Bar(barChartData, {
             scaleShowHorizontalLines: true,
             scaleShowVerticalLines: true,
             scaleBeginAtZero : true,
-            responsive : false
+            responsive : false,
+            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
         });
+/*
+        var legendHolderBar = document.createElement('div');
+        legendHolderBar.innerHTML = window.myBar.generateLegend();
+
+        document.getElementById('legend').appendChild(legendHolderBar.firstChild);
+        */
+
+        var legendHolderBar = document.createElement('div');
+        legendHolderBar.innerHTML = window.myBar.generateLegend();
+        // Include a html legend template after the module doughnut itself
+        helpers.each(legendHolderBar.firstChild.childNodes, function(legendNode, index){
+            helpers.addEvent(legendNode, 'mouseover', function(){
+                var activeSegment = window.myBar.segments[index];
+                activeSegment.save();
+                activeSegment.fillColor = activeSegment.highlightColor;
+                window.myBar.showTooltip([activeSegment]);
+                activeSegment.restore();
+            });
+        });
+        helpers.addEvent(legendHolderBar.firstChild, 'mouseout', function(){
+            window.myBar.draw();
+        });
+        barCanvas.parentNode.appendChild(legendHolderBar.firstChild);
 
 /*
 		var ctx4 = document.getElementById("chart-bar-2").getContext("2d");

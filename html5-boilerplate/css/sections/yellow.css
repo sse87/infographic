@@ -92,6 +92,41 @@
   border-radius: 5px;
 }
 
+.bar-legend {
+  list-style: none;
+  position: absolute;
+  right: 5%;
+  padding-top: 10%;
+  top: 0;
+}
+.bar-legend li {
+  color: black;
+  display: inline;
+  padding-left: 30px;
+  position: relative;
+  margin-bottom: 4px;
+  border-radius: 5px;
+  padding: 2px 8px 2px 28px;
+  font-size: 14px;
+  cursor: default;
+  -webkit-transition: background-color 200ms ease-in-out;
+  -moz-transition: background-color 200ms ease-in-out;
+  -o-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+.bar-legend li:hover {
+  background-color: #fafafa;
+}
+.bar-legend li span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  border-radius: 5px;
+}
+
 .chart-container {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     border-radius: 5px;
@@ -100,7 +135,7 @@
     background-color: #FFCC80;
     position: relative;
     height: 300px;
-    width: 260px;
+    width: 420px;
 }
 
 .chart-container-pie {

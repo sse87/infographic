@@ -30,6 +30,7 @@ $(document).ready(function () {
             '<div class="chart-wrapper chart-wrapper-pie">' + 
                 '<canvas id="chart-pie-1"></canvas>' + 
             '</div>' + 
+        '<div id="legend"></div>' + 
         '</div>').appendTo(wrapper);
 
 });
