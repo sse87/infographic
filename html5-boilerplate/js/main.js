@@ -10,6 +10,7 @@ $(document).ready(function () {
 		info.init();
 	}, 100);
     var randomScalingFactor = function(){ return Math.round(Math.random()*100);};
+    var randomScalingFactorThousand = function(){ return Math.round(Math.random()*100000);};
 
     var pieData = [
             {
@@ -85,24 +86,37 @@ $(document).ready(function () {
         labels: ["2009", "2010", "2011", "2012", "2013", "2014", "2015"],
         datasets: [
             {
-                label: "Walkers",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [87300, 95039, 55387, 67109, 48928, 73847, 29837]
-            },
-            {
-                label: "Runners",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
+                label: "Sleepers",
+                fillColor: "rgba(255,90,94,0.2)",
+                strokeColor: "rgba(255,90,94,1)",
+                pointColor: "rgba(255,90,94,1)",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [75384, 84398, 58347, 29387, 47837, 63982, 82398]
+                /*data: [48372, 28376, 58766, 19827, 73867, 18276, 98472]*/
+                data: [randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand()]
+            },
+            {
+                label: "Runners",
+                fillColor: "rgba(70,191,189,0.2)",
+                strokeColor: "rgba(70,191,189,1)",
+                pointColor: "rgba(70,191,189,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                /*data: [95384, 84398, 58347, 29387, 47837, 63982, 82398]*/
+                data: [randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand()]
+            },
+            {
+                label: "Walkers",
+                fillColor: "rgba(104,159,56,0.2)",
+                strokeColor: "rgba(104,159,56,1)",
+                pointColor: "rgba(104,159,56,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                /*data: [87300, 95039, 55387, 67109, 48928, 73847, 29837]*/
+                data: [randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand(), randomScalingFactorThousand()]
             }
         ]
     };

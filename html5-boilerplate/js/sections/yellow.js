@@ -18,7 +18,7 @@ $(document).ready(function () {
     $(  
 
         '<div class="subtext-body">' + 
-            '<p>A lot of things have happened sence your last visit, survivor.</p>' + 
+            '<p>A lot of things have happened since your last visit, survivor.</p>' + 
         '</div">' + 
         '<div class="chart-body">' + 
             '<div class="chart-container">' + 
