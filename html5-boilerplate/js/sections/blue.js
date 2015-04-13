@@ -200,61 +200,48 @@ $(document).ready(function () {
 	});
 	$('#blue nav a').click(function (e) {
 		e.preventDefault();
-		$('#blue .container').hide();
 		var index = $(this).attr('href').replace('#weapon-', '');
-		$('#blue .container').eq(index).show();
+		$('#weaponDetails .image').attr('style', 'background-image: url("img/weapons/' + weapons[index].image +'");');
+		var text = '<h2>%name%</h2><div class="type">%type%</div><div class="desc">%desc%</div>';
+		text = text.replace('%name%', weapons[index].name);
+		text = text.replace('%type%', weapons[index].type);
+		text = text.replace('%desc%', weapons[index].description);
+		$('#weaponDetails .text').html(text);
+		//$('#weaponDetails .specs').
 	});
 	
 	
-	weapons.forEach(function (weapon, i) {
-		
-		var container = $('<div></div>', {
-			'class': 'container',
-			'id': 'weapon-' + i,
-			'style': 'display: none;'
-		}).appendTo(base);
-		
-		var column1 = $('<div></div>', {
-			'class': 'column'
-		}).appendTo(container);
-		$('<div></div>', {
-			'class': 'image',
-			'style': 'background-image: url("img/weapons/' + weapon.image + '");'
-		}).appendTo(column1);
-		$('<div></div>', {
-			'class': 'specs',
-			'html': '<canvas id="canvasWeapon' + i + '" height="450" width="450"></canvas>'
-		}).appendTo(column1);
-		
-		var column2 = $('<div></div>', {
-			'class': 'column'
-		}).appendTo(container);
-		$('<div></div>', {
-			'class': 'text',
-			'html': '<h2>%name%</h2><div class="type">%type%</div><div class="desc">%desc%</div>'
-				.replace('%name%', weapon.name).replace('%type%', weapon.type).replace('%desc%', weapon.description)
-		}).appendTo(column2);
-		
-		/*var data = {
-			labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
-			datasets: [
-				{
-					label: 'My First dataset',
-					fillColor: 'rgba(46,125,50,0.2)',
-					strokeColor: 'rgba(46,125,50,1)',
-					pointColor: 'rgba(46,125,50,1)',
-					pointStrokeColor: '#fff',
-					pointHighlightFill: '#fff',
-					pointHighlightStroke: 'rgba(220,220,220,1)',
-					data: [65, 59, 90, 81, 56, 55, 40]
-				}
-			]
-		};
-		
-		$(window).load(function () {
-			var context = document.getElementById('canvasWeapon' + i).getContext('2d');
-			var chart = new Chart(context).PolarArea(data);
-		});*/
+	
+	var container = $('<div></div>', { 'class': 'container', 'id': 'weaponDetails' }).appendTo(base);
+	var column1 = $('<div></div>', { 'class': 'column' }).appendTo(container);
+	var column2 = $('<div></div>', { 'class': 'column' }).appendTo(container);
+	$('<div></div>', { 'class': 'image' }).appendTo(column1);
+	$('<div></div>', { 'class': 'specs', 'html': '<canvas id="canvasWeaponSpecs"></canvas>' }).appendTo(column1);
+	$('<div></div>', { 'class': 'text' }).appendTo(column2);
+	
+	// Default click the first weapon
+	$('#blue nav a').first().trigger('click');
+	
+	/*
+	var radarChartData = {
+		labels: ['Accuracy', 'Mag Size', 'Weight'],
+		datasets: [
+			{
+				label: 'My First dataset',
+				fillColor: 'rgba(46,125,50,0.2)',
+				strokeColor: 'rgba(46,125,50,1)',
+				pointColor: 'rgba(46,125,50,1)',
+				pointStrokeColor: '#fff',
+				pointHighlightFill: '#fff',
+				pointHighlightStroke: 'rgba(220,220,220,1)',
+				data: [97, 150, 7.2]
+			}
+		]
+	};
+	
+	$(window).load(function () {
+		var context = document.getElementById('canvasWeapon' + i).getContext('2d');
+		var chart = new Chart(context).PolarArea(data);
 	});
 	
 	var radarChartTestWrapper = $('<div></div>').appendTo(base);
@@ -278,26 +265,6 @@ $(document).ready(function () {
 	$(window).load(function () {
 		window.myRadar = new Chart(document.getElementById('canvas').getContext('2d')).Radar(radarChartData);
 	});
-	
-	
-	/*
-	$('<div></div>', { 'class': 'weapon', 'style': 'left:  800px;bottom: 10%;background-image: url("img/weapons/weapon3.png");'  }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 1300px;top:    10%;background-image: url("img/weapons/weapon7.png");'  }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 1800px;bottom: 10%;background-image: url("img/weapons/weapon9.png");'  }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 2300px;top:    10%;background-image: url("img/weapons/weapon5.png");'  }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 2800px;bottom: 10%;background-image: url("img/weapons/weapon8.png");'  }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 3300px;top:    10%;background-image: url("img/weapons/weapon11.png");' }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 3800px;bottom: 10%;background-image: url("img/weapons/weapon4.png");'  }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 4300px;top:    10%;background-image: url("img/weapons/weapon15.png");' }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 4800px;bottom: 10%;background-image: url("img/weapons/weapon6.png");'  }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 5300px;top:    10%;background-image: url("img/weapons/weapon16.png");' }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 5800px;bottom: 10%;background-image: url("img/weapons/weapon1.png");'  }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 6300px;top:    10%;background-image: url("img/weapons/weapon2.png");'  }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 6800px;bottom: 10%;background-image: url("img/weapons/weapon17.png");' }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 7300px;top:    10%;background-image: url("img/weapons/weapon18.png");' }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 7800px;bottom: 10%;background-image: url("img/weapons/weapon10.png");' }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 8300px;top:    10%;background-image: url("img/weapons/weapon12.png");width: 125px;' }).appendTo(base);
-	$('<div></div>', { 'class': 'weapon', 'style': 'left: 8600px;bottom: 10%;background-image: url("img/weapons/weapon14.png");width: 125px;' }).appendTo(base);
 	*/
 	
 	

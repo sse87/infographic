@@ -67,10 +67,14 @@
 #blue .container .column .image {
 	background: none no-repeat scroll 50% 50% transparent;
 	background-size: contain;
-	height: 50%
+	height: 50%;
 }
 #blue .container .column .specs {
-	height: 50%
+	height: 50%;
+}
+#blue .container .column .specs #canvasWeaponSpecs {
+	height: 100%;
+	width: 100%;
 }
 #blue .container .column .text {
 	padding: 20px;
