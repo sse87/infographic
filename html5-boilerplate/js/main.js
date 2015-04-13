@@ -37,7 +37,7 @@ $(document).ready(function () {
                 label: "Africa"
             },
             {
-                value: 54093,
+                value: 73992,
                 color: "#689F38",
                 highlight: "#8BC34A",
                 label: "Oceania"
@@ -54,19 +54,27 @@ $(document).ready(function () {
         labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct"],
         datasets : [
             {
+                label: "Zombie",
+                fillColor : "rgba(247,70,74,0.5)",
+                strokeColor : "rgba(247,70,74,0.8)",
+                highlightFill: "rgba(247,70,74,0.75)",
+                highlightStroke: "rgba(247,70,74,1)",
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            },
+            {
                 label: "Suicide",
-                fillColor : "rgba(255,183,77,0.5)",
-                strokeColor : "rgba(255,183,77,0.8)",
-                highlightFill: "rgba(255,183,77,0.75)",
-                highlightStroke: "rgba(255,183,77,1)",
+                fillColor : "rgba(70,191,189,0.5)",
+                strokeColor : "rgba(70,191,189,0.8)",
+                highlightFill: "rgba(70,191,189,0.75)",
+                highlightStroke: "rgba(70,191,189,1)",
                 data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
             },
             {
                 label: "Murder",
-                fillColor : "rgba(245,124,0,0.5)",
-                strokeColor : "rgba(245,124,0,0.8)",
-                highlightFill : "rgba(245,124,0,0.75)",
-                highlightStroke : "rgba(245,124,0,1)",
+                fillColor : "rgba(104,159,56,0.5)",
+                strokeColor : "rgba(104,159,56,0.8)",
+                highlightFill : "rgba(104,159,56,0.75)",
+                highlightStroke : "rgba(104,159,56,1)",
                 data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
             }
         ]
