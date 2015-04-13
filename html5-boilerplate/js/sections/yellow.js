@@ -16,6 +16,10 @@ $(document).ready(function () {
 
 	$('<h1 class="yellow-title">Welcome back, survivor.</h1>').appendTo(wrapper);
     $(  
+
+        '<div class="subtext-body">' + 
+            '<p>A lot of things have happened sence your last visit, survivor.</p>' + 
+        '</div">' + 
         '<div class="chart-body">' + 
             '<div class="chart-container">' + 
                 '<div class="chart-title">' + 
@@ -23,6 +27,14 @@ $(document).ready(function () {
                 '</div>' + 
                 '<div class="chart-wrapper chart-wrapper-bar">' + 
                     '<canvas id="chart-bar-1"></canvas>' + 
+                '</div>' + 
+            '</div>' + 
+            '<div class="chart-container chart-container-middle">' + 
+                '<div class="chart-title">' + 
+                    '<span>Something else</span>' + 
+                '</div>' + 
+                '<div class="chart-wrapper">' + 
+                    '<canvas id="chart-bar-middle"></canvas>' + 
                 '</div>' + 
             '</div>' + 
             '<div class="chart-container chart-container-pie">' + 

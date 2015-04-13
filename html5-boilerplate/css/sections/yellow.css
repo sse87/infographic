@@ -11,6 +11,10 @@
     bottom: 60px;
 }
 
+.subtext-body p {
+    text-align: center;
+}
+
 .yellow-title {
     font-weight: 300;
     font-size: 3.2em;
@@ -143,6 +147,11 @@
     position: relative;
     height: 300px;
     width: 420px;
+}
+
+.chart-container-middle {
+    height: 300px;
+    width: 220px;
 }
 
 .chart-container-pie {

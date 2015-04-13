@@ -95,9 +95,9 @@ $(document).ready(function () {
         });
 
         var helpers = Chart.helpers;
+        /* Rightmost pie chart in yellow */
         var legendHolderPie = document.createElement('div');
         legendHolderPie.innerHTML = window.myPie.generateLegend();
-        // Include a html legend template after the module doughnut itself
         helpers.each(legendHolderPie.firstChild.childNodes, function(legendNode, index){
             helpers.addEvent(legendNode, 'mouseover', function(){
                 var activeSegment = window.myPie.segments[index];
@@ -111,7 +111,9 @@ $(document).ready(function () {
             window.myPie.draw();
         });
         pieCanvas.parentNode.appendChild(legendHolderPie.firstChild);
+        /* ----------------------------- */
 
+        /* Leftmost bar chart in yellow */
         var barCanvas = document.getElementById("chart-bar-1");
         var barChart = barCanvas.getContext("2d");
         window.myBar = new Chart(barChart).Bar(barChartData, {
@@ -122,16 +124,8 @@ $(document).ready(function () {
             legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
         });
-/*
         var legendHolderBar = document.createElement('div');
         legendHolderBar.innerHTML = window.myBar.generateLegend();
-
-        document.getElementById('legend').appendChild(legendHolderBar.firstChild);
-        */
-
-        var legendHolderBar = document.createElement('div');
-        legendHolderBar.innerHTML = window.myBar.generateLegend();
-        // Include a html legend template after the module doughnut itself
         helpers.each(legendHolderBar.firstChild.childNodes, function(legendNode, index){
             helpers.addEvent(legendNode, 'mouseover', function(){
                 var activeSegment = window.myBar.segments[index];
@@ -145,15 +139,7 @@ $(document).ready(function () {
             window.myBar.draw();
         });
         barCanvas.parentNode.appendChild(legendHolderBar.firstChild);
+        /* ---------------------------- */
 
-/*
-		var ctx4 = document.getElementById("chart-bar-2").getContext("2d");
-		window.myBar = new Chart(ctx4).Bar(barChartData, {
-            scaleShowHorizontalLines: true,
-            scaleShowVerticalLines: true,
-            scaleBeginAtZero : true,
-			responsive : false
-		});
-        */
     };
 });
