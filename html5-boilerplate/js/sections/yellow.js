@@ -17,7 +17,7 @@ $(document).ready(function () {
 	$('<h1 class="yellow-title">Welcome back, survivor.</h1>').appendTo(wrapper);
     $(  '<div class="chart-container">' + 
             '<div class="chart-title">' + 
-                '<span>Total deaths</span>' + 
+                '<span>Causes of death</span>' + 
             '</div>' + 
             '<div class="chart-wrapper chart-wrapper-bar">' + 
                 '<canvas id="chart-bar-1"></canvas>' + 
