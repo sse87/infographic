@@ -113,7 +113,7 @@ $(document).ready(function () {
         pieCanvas.parentNode.appendChild(legendHolderPie.firstChild);
 
         var barCanvas = document.getElementById("chart-bar-1");
-        var barChart = barCanvas.getContext("2d")
+        var barChart = barCanvas.getContext("2d");
         window.myBar = new Chart(barChart).Bar(barChartData, {
             scaleShowHorizontalLines: true,
             scaleShowVerticalLines: true,
