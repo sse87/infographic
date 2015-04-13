@@ -5,6 +5,10 @@
 	width: 100%;
 }
 
+.chart-body {
+    height: 100%;
+}
+
 .yellow-title {
     font-weight: 300;
     font-size: 3.2em;
