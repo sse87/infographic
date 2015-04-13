@@ -121,7 +121,7 @@ body > footer p {
 .main-content {
 	background-color: #FFF;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
-	margin: 140px 0 300px;
+	margin: 104px 0 300px;
 	overflow: hidden;
 }
 .main-content section {
@@ -129,7 +129,7 @@ body > footer p {
 	/*border-bottom: 2px solid #dadada;*/
 	left: 0;
 	position: relative;
-	transition: transform 1s cubic-bezier(.7,.1,.3,.9) 0s;
+	transition: transform 1s cubic-bezier(0.7,0.1,0.3,0.9) 0s;
 }
 
 

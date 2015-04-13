@@ -23,11 +23,8 @@ var Info = function () {
 	this.sectionsEl = $('.main-content section');
 	this.windowWidth = $(window).width();
 	
-	// High priority bug: If user refresh on mid site, has to init the active section
 	this.activeSection = this.sectionsEl.first();
 	this.activeSectionViewportX = 0;
-	
-	this.progress = new Progress();
 	
 	
 	
@@ -39,12 +36,10 @@ var Info = function () {
 		
 		// Initialize key variables, adjust sizes and bind events
 		//this.autoSectionWidth();
-		this.overwriteScroll();
+		//this.overwriteScroll();
+		this.bindHeaderAnimationOnScroll();
 		this.bindResize();
 		this.bindKeydown();
-		
-		// Initialize the active section progress bar
-		this.progress.init();
 		
 		// Move to closest section
 		this.moveToSection();
@@ -121,17 +116,17 @@ var Info = function () {
 					if (tag !== 'input' && tag !== 'textarea') { base.moveDown(); }
 				break;
 				
-				case Key.A:
-				case Key.LEFT:
-					e.preventDefault();
-					if (tag !== 'input' && tag !== 'textarea') { base.moveLeft(); }
-				break;
+			//	case Key.A:
+			//	case Key.LEFT:
+			//		e.preventDefault();
+			//		if (tag !== 'input' && tag !== 'textarea') { base.moveLeft(); }
+			//	break;
 				
-				case Key.D:
-				case Key.RIGHT:
-					e.preventDefault();
-					if (tag !== 'input' && tag !== 'textarea') { base.moveRight(); }
-				break;
+			//	case Key.D:
+			//	case Key.RIGHT:
+			//		e.preventDefault();
+			//		if (tag !== 'input' && tag !== 'textarea') { base.moveRight(); }
+			//	break;
 				
 			}
 		});
@@ -168,7 +163,17 @@ var Info = function () {
 		
 	};
 	
+	this.bindHeaderAnimationOnScroll = function () {
+		var base = this;
+		
+		$(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function (event) {
+			var windowPos = $(document).scrollTop() + base.headerHeight;
+			console.log('SCORLL: ' + windowPos);
+		});
+		
+	};
 	
+	/*
 	this.moveLeft = function () {
 		this.moveWithinActiveSection('left');
 	};
@@ -209,7 +214,7 @@ var Info = function () {
 		$(section).css('transform', 'translate3d(0,0,0)');
 		this.progress.setProgress(0);
 	};
-	
+	*/
 	
 	this.moveDown = function () {
 		this.moveToSection('down');
@@ -285,26 +290,28 @@ var Info = function () {
 	this.scrollToSection = function (section) {
 		var base = this;
 		
-		var prevSection = base.activeSection;
-		setTimeout(function() {
-			base.resetActiveSection(prevSection);
-		}, 1000);
+		//var prevSection = base.activeSection;
+		//setTimeout(function() {
+		//	base.resetActiveSection(prevSection);
+		//}, 1000);
 		base.activeSection = section;
 		
 		var targetPos = $(base.activeSection).position().top;
+		console.log('animateTo: ' + (targetPos - base.headerHeight));
 		animateTo({ position: (targetPos - base.headerHeight) });
 		base.animateHeaderColor();
 	};
 	this.scrollToBottom = function () {
 		var base = this;
 		
-		var prevSection = base.activeSection;
-		setTimeout(function() {
-			base.resetActiveSection(prevSection);
-		}, 1000);
+		//var prevSection = base.activeSection;
+		//setTimeout(function() {
+		//	base.resetActiveSection(prevSection);
+		//}, 1000);
 		base.activeSection = base.sectionsEl.last();
 		
 		var targetPos = $(base.activeSection).position().top;
+		console.log('animateTo: ' + (targetPos - base.headerHeight + base.footerHeight));
 		animateTo({ position: (targetPos - base.headerHeight + base.footerHeight) });
 		base.animateHeaderColor();
 	};

@@ -1,6 +1,9 @@
 ﻿
+/*JS Lint helpers: */
+/*global */
+/*jslint unused:false */
+
 var Utils = function Utils() {
-	//var Filesystem = require('../machinepack-fs');
 
 
 
@@ -64,7 +67,6 @@ Utils.prototype.buildMarkupElement = function (elementName, contents, listOfAttr
 	return result;
 };
 
-var buttstuff = new Utils();
 
 
 
@@ -75,13 +77,10 @@ var attributes = [
 	{ name: "style", values: ["width:200px"] },
 ];
 
-var butt = buttstuff.buildMarkupElement("div", "penis", attributes);
 
 
-//$('.main-content').append(butt);
 
 
-console.log(butt);
 
 
 
