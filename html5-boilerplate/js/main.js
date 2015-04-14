@@ -127,7 +127,7 @@ $(document).ready(function () {
         datasets: [
             {
                 label: "Sleeper",
-                fillColor: "rgba(255,90,94,0.2)",
+                fillColor: "rgba(255,90,94,0.4)",
                 strokeColor: "rgba(255,90,94,1)",
                 pointColor: "rgba(255,90,94,1)",
                 pointStrokeColor: "#fff",
@@ -157,7 +157,7 @@ $(document).ready(function () {
         datasets: [
             {
                 label: "My First dataset",
-                fillColor: "rgba(104,159,56,0.2)",
+                fillColor: "rgba(104,159,56,0.4)",
                 strokeColor: "rgba(104,159,56,1)",
                 pointColor: "rgba(104,159,56,1)",
                 pointStrokeColor: "#fff",

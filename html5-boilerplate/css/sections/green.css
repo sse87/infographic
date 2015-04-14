@@ -100,5 +100,7 @@
     width: calc(100% - 10px);
     height: calc(70% - 135px);
     position: relative;
+    background-color: #80CBC4;
+    border-radius: 130px 130px 5px 5px;
 }
 
