@@ -24,7 +24,7 @@
 #blue .nav-wrapper {
 	/*border: 2px solid #388E3C;
 	border-left: 0px;*/
-    background-color: #fff;
+    background-color: #000;
 	display: inline-block;
 	position: relative;
 	width: 5.71194%;
@@ -33,7 +33,7 @@
 }
 
 #blue .nav-wrapper a {
-	background: none no-repeat scroll 50% 50% #E8F5E9;
+	background: none no-repeat scroll 50% 50%;
 	background-size: contain;
 	position: absolute;
 	top: 0;
