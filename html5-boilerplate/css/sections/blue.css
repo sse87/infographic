@@ -54,7 +54,7 @@
 
 #blue .card-container {
     width: 100%;
-    height: 70%;
+    height: 469px;
     background-color: #FFCDD2;
 }
 
@@ -96,9 +96,9 @@
 }
 #blue .column .specs {
     position: relative;
-    margin: 50px;
-    height: calc(535px - 100px);
-    width: calc(600px - 100px);
+    margin: 30px;
+    height: calc(422px - 60px);
+    width: calc(600px - 60px);
 }
 #blue .column .specs #canvasWeaponSpecs {
 	height: 100%;
