@@ -5,16 +5,6 @@
 
 $(document).ready(function () {
 	
-	var base = $('<section></section>', {
-		'id': 'blue',
-		'data-header-bg-color': '#2E7D32',// Green: 800
-		'data-header-color': '#FFF3E0'
-	}).appendTo('.main-content');
-	
-	function getRandom (min, max) {
-		return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
-	
 	var weapons = [
 		/* FIREARMS */
 		{
@@ -41,6 +31,7 @@ $(document).ready(function () {
 			description: 'Highly explosive shells from this weapon are guaranteed to blast infected to pieces within a tight radius, and stagger any infected immediately outside of that radius. It takes a while to reload, so make your shots count. ',
 			type: 'Firearm'
 		},
+        /*
 		{
 			image: 'weapon15.png',
 			name: 'M1911 Pistol',
@@ -64,7 +55,7 @@ $(document).ready(function () {
 			name: 'M60 ',
 			description: 'The high capacity of rounds without reloading can really help when faced with a large swarm of Infected.',
 			type: 'Firearm'
-		},
+		}, */
 		/* MELEE WEAPONS */
 		{
 			image: 'weapon3.png',
@@ -84,6 +75,7 @@ $(document).ready(function () {
 			description: 'The right weapon in the right place.',
 			type: 'Melee'
 		},
+       /* 
 		{
 			image: 'weapon7.png',
 			name: 'Axe',
@@ -108,7 +100,9 @@ $(document).ready(function () {
 			description: 'The perfect blade for clearing sudden rainforests.',
 			type: 'Melee'
 		},
+        */
 		/* THROWABLES*/
+        /*
 		{
 			image: 'weapon12.png',
 			name: 'Molotov Cocktail',
@@ -120,21 +114,38 @@ $(document).ready(function () {
 			name: 'Pipe Bomb',
 			description: 'The Pipe Bomb is an IED that can be used offensively, defensively and for diversionary purposes.',
 			type: 'Throwable'
-		}
+		}*/
 	];
 	
+	var base = $('<section></section>', {
+		'id': 'blue',
+		'data-header-bg-color': '#2E7D32',// Green: 800
+		'data-header-color': '#FFF3E0'
+	}).appendTo('.main-content');
+
+	var container = $('<div></div>', { 'class': 'limit limit-body', 'id': 'weaponDetails' }).appendTo(base);
 	
-	
-	var nav = $('<nav></nav>').appendTo(base);
+	function getRandom (min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	var column1 = $('<div></div>', { 'class': 'column' }).appendTo(container);
+	var column2 = $('<div></div>', { 'class': 'column' }).appendTo(container);
+	$('<div></div>', { 'class': 'image' }).appendTo(column1);
+	$('<div></div>', { 'class': 'specs', 'html': '<canvas id="canvasWeaponSpecs"></canvas>' }).appendTo(column1);
+	$('<div></div>', { 'class': 'text' }).appendTo(column2);
+
+	var nav = $('<nav></nav>').appendTo(container);
 	weapons.forEach(function (weapon, i) {
 		var wrapper = $('<div></div>', {
-			'class': 'wrapper'
+			'class': 'nav-wrapper'
 		}).appendTo(nav);
 		$('<a></a>', {
 			'href': '#weapon-' + i,
 			'style': 'background-image: url("img/weapons/' + weapon.image + '");'
 		}).appendTo(wrapper);
 	});
+	
 	$('#blue nav a').click(function (e) {
 		e.preventDefault();
 		var index = $(this).attr('href').replace('#weapon-', '');
@@ -152,15 +163,8 @@ $(document).ready(function () {
 		window.canvasWeaponSpecs.datasets[0].points[4].value = getRandom(20, 100);
 		window.canvasWeaponSpecs.update();
 	});
-	
-	
-	
-	var container = $('<div></div>', { 'class': 'container', 'id': 'weaponDetails' }).appendTo(base);
-	var column1 = $('<div></div>', { 'class': 'column' }).appendTo(container);
-	var column2 = $('<div></div>', { 'class': 'column' }).appendTo(container);
-	$('<div></div>', { 'class': 'image' }).appendTo(column1);
-	$('<div></div>', { 'class': 'specs', 'html': '<canvas id="canvasWeaponSpecs"></canvas>' }).appendTo(column1);
-	$('<div></div>', { 'class': 'text' }).appendTo(column2);
+
+
 	
 	$(window).load(function () {
 		var radarChartData = {

@@ -18,28 +18,21 @@
 }
 
 #blue nav {
-	background-color: #81C784;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	left: 0;
+	/*background-color: #81C784;*/
+    width: 100%;
 }
-#blue nav .wrapper {
-	border: 2px solid #388E3C;
-	border-left: 0px;
+#blue .nav-wrapper {
+	/*border: 2px solid #388E3C;
+	border-left: 0px;*/
+    background-color: #fff;
 	display: inline-block;
 	position: relative;
 	width: 5.71194%;
+    height: 50px;
+    margin-left: 10px
 }
-#blue nav .wrapper:first-child {
-	border-left: 2px solid #388E3C;
-}
-#blue nav .wrapper:before {
-	content: "";
-	display: block;
-	padding-top: 100%;
-}
-#blue nav .wrapper a {
+
+#blue .nav-wrapper a {
 	background: none no-repeat scroll 50% 50% #E8F5E9;
 	background-size: contain;
 	position: absolute;
@@ -48,7 +41,7 @@
 	bottom: -5px;/* Don't ask */
 	left: 0;
 }
-#blue nav .wrapper a:hover {
+#blue .nav-wrapper a:hover {
 	background-color: #C8E6C9;
 }
 
@@ -56,33 +49,34 @@
 	height: 90%;
 	position: relative;
 }
-#blue .container .column {
+#blue .column {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	width: 50%;
 }
-#blue .container .column:nth-child(2n+1) { left: 0; }
-#blue .container .column:nth-child(2n) { right: 0; }
-#blue .container .column .image {
+#blue .column:nth-child(2n+1) { left: 0; }
+#blue .column:nth-child(2n) { right: 0; }
+#blue .column .image {
 	background: none no-repeat scroll 50% 50% transparent;
 	background-size: contain;
 	height: 50%;
 }
-#blue .container .column .specs {
-	height: 50%;
+#blue .column .specs {
+    position: relative;
+	height: 400px;
 }
-#blue .container .column .specs #canvasWeaponSpecs {
+#blue .column .specs #canvasWeaponSpecs {
 	height: 100%;
 	width: 100%;
 }
-#blue .container .column .text {
+#blue .column .text {
 	padding: 20px;
 }
-#blue .container .column .text h2 {}
-#blue .container .column .text .type {
+#blue .column .text h2 {}
+#blue .column .text .type {
 	font-style: italic;
 }
-#blue .container .column .text .desc {
+#blue .column .text .desc {
 	font-size: 1.2em;
 }
