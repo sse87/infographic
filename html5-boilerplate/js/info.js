@@ -47,6 +47,7 @@ var Info = function () {
 		this.animateHeaderColor();
 		
 		this.addSectionNav();
+		this.bindAllSectionArrows();
 		
 		if (verbose) { console.log('init() ENDS!'); }
 	};
@@ -309,10 +310,25 @@ var Info = function () {
 			var link = $('<a href="#section' + i + '"></a>').appendTo(navWrapper);
 			$('<div></div>', { 'class': 'dot' }).appendTo(link);
 			
-			link.click(function () {
+			link.click(function (e) {
+				e.preventDefault();
 				var sectionIndex = $(this).attr('href').replace('#section', '');
 				base.scrollToSection(base.sectionsEl[sectionIndex]);
 			});
+		});
+		
+	};
+	
+	this.bindAllSectionArrows = function () {
+		var base = this;
+		
+		$('body .main-content section .nextSectionArrow').click(function () {
+			
+			var section = $(this).parent('section').next();
+			if (section.is('section') === true) {
+				base.scrollToSection(section);
+			}
+			
 		});
 		
 	};

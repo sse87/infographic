@@ -81,7 +81,7 @@ body > header {
 	position: fixed;
 	right: 0;
 	top: 0;
-	z-index: 1;
+	z-index: 100;
 }
 body > header .actions {
 	display: none;/* set this feature on hold */
@@ -100,7 +100,7 @@ body > footer {
 	position: fixed;
 	right: 0;
 	text-align: center;
-	z-index: -1;
+	z-index: -100;
 }
 body > footer p {
 	margin-top: 110px;
@@ -135,6 +135,16 @@ body > footer p {
 	left: 0;
 	position: relative;
 	transition: transform 1s cubic-bezier(0.7,0.1,0.3,0.9) 0s;
+}
+.main-content section .nextSectionArrow {
+	bottom: 20px;
+	cursor: pointer;
+	display: inline-block;
+	left: 46%;
+	right: 46%;
+	position: absolute;
+	text-align: center;
+	z-index: 10;
 }
 
 
