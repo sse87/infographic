@@ -159,22 +159,8 @@ var Info = function () {
 		var buffer = true;
 		var queue = false;
 		$(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll scroll', function (event) {
-			if (buffer) {
-				
-				base.activeSection = base.detectCurrentSection();
-				base.animateHeaderColor();
-				
-				buffer = false;
-				setTimeout(function() {
-					buffer = true;
-					if (queue) {
-						queue = false;
-						$(document).trigger('mousewheel');
-					}
-				}, 1000);
-			} else {
-				queue = true;
-			}
+			base.activeSection = base.detectCurrentSection();
+			base.animateHeaderColor();
 		});
 		
 	};
@@ -300,7 +286,7 @@ var Info = function () {
 	this.animateHeaderColor = function () {
 		var headerBackgroundColor = $(this.activeSection).attr('data-header-bg-color');
 		var headerColor = $(this.activeSection).attr('data-header-color');
-		this.headerEl.animate({
+		this.headerEl.stop().animate({
 			'background-color': headerBackgroundColor,
 			'color': headerColor
 		}, 1000, $.bez([0.7,0.1,0.3,0.9]));
