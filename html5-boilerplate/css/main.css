@@ -121,6 +121,7 @@ body > footer p {
 .limit-body {
     height: 100%;
     position: relative;
+    margin-top: 5%;
 }
 .main-content {
 	background-color: #FFF;
