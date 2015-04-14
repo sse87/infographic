@@ -1,5 +1,7 @@
 
-
+/*JS Lint helpers: */
+/*global */
+/*jslint unused:false */
 
 $(document).ready(function () {
 	

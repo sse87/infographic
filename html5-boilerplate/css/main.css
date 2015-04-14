@@ -169,6 +169,25 @@ body > footer p {
 
 
 
+nav.sectionNav {
+	right: 20px;
+	position: fixed;
+	top: 50%;
+}
+nav.sectionNav a {
+	display: block;
+	padding: 10px;
+}
+nav.sectionNav a .dot {
+	background: url('../img/rightnav-dots.png') no-repeat scroll 0 0 transparent;
+	height: 16px;
+	overflow: hidden;
+	width: 16px;
+}
+nav.sectionNav a.active .dot, nav.sectionNav a:hover .dot {
+	background-position: -16px 0;
+}
+
 
 
 

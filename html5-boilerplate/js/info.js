@@ -46,6 +46,8 @@ var Info = function () {
 		this.activeSection = this.detectCurrentSection();
 		this.animateHeaderColor();
 		
+		this.addSectionNav();
+		
 		if (verbose) { console.log('init() ENDS!'); }
 	};
 	
@@ -290,8 +292,29 @@ var Info = function () {
 			'background-color': headerBackgroundColor,
 			'color': headerColor
 		}, 1000, $.bez([0.7,0.1,0.3,0.9]));
+		// Section nav indicator
+		$('nav.sectionNav a').removeClass('active');
+		var sectionIndex = this.sectionsEl.index(this.activeSection);
+		$('nav.sectionNav a').eq(sectionIndex).addClass('active');
 	};
 	
 	
+	// Section navigation
+	this.addSectionNav = function () {
+		var base = this;
+		
+		var navWrapper = $('<nav></nav>', { 'class': 'sectionNav' }).appendTo('body');
+		// Add a dot for each section
+		base.sectionsEl.each(function (i, section) {
+			var link = $('<a href="#section' + i + '"></a>').appendTo(navWrapper);
+			$('<div></div>', { 'class': 'dot' }).appendTo(link);
+			
+			link.click(function () {
+				var sectionIndex = $(this).attr('href').replace('#section', '');
+				base.scrollToSection(base.sectionsEl[sectionIndex]);
+			});
+		});
+		
+	};
 	
 };
