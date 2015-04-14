@@ -10,10 +10,10 @@ $(document).ready(function () {
 	});
 	$('.main-content').append(base);
 	
-	var wrapper = $('<div></div>', { 
-        'class': 'limit limit-body', 
-        }).appendTo(base);
-
+	$('<div></div>', { 
+		'class': 'limit limit-body', 
+	}).appendTo(base);
+	
 	
 });
 
