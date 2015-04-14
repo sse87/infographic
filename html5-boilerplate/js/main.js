@@ -142,7 +142,7 @@ $(document).ready(function () {
         datasets: [
             {
                 label: "Runners",
-                fillColor: "rgba(253,180,92,0.2)",
+                fillColor: "rgba(253,180,92, 0.4)",
                 strokeColor: "rgba(253,180,92,1)",
                 pointColor: "rgba(253,180,92,1)",
                 pointStrokeColor: "#fff",
