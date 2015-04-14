@@ -97,8 +97,8 @@
 #blue .column .specs {
     position: relative;
     margin: 50px;
-    height: calc(100% - 100px);
-    width: calc(100% - 100px);
+    height: calc(535px - 100px);
+    width: calc(600px - 100px);
 }
 #blue .column .specs #canvasWeaponSpecs {
 	height: 100%;
