@@ -119,7 +119,7 @@ $(document).ready(function () {
 	
 	var base = $('<section></section>', {
 		'id': 'blue',
-		'data-header-bg-color': '#2E7D32',// Green: 800
+		'data-header-bg-color': '#C62828',// Red: 800
 		'data-header-color': '#FFF3E0'
 	}).appendTo('.main-content');
 
@@ -129,11 +129,20 @@ $(document).ready(function () {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	var column1 = $('<div></div>', { 'class': 'column' }).appendTo(container);
-	var column2 = $('<div></div>', { 'class': 'column' }).appendTo(container);
-	$('<div></div>', { 'class': 'image' }).appendTo(column1);
-	$('<div></div>', { 'class': 'specs', 'html': '<canvas id="canvasWeaponSpecs"></canvas>' }).appendTo(column1);
-	$('<div></div>', { 'class': 'text' }).appendTo(column2);
+	var cardContainer = $('<div></div>', { 'class': 'card-container' }).appendTo(container);
+	var title = $(
+    '<div class="weapon-title">' +
+        '<h3></h3>' +
+    '</div>'
+    ).appendTo(cardContainer);
+
+
+	var columnLeft = $('<div></div>', { 'class': 'column column-left' }).appendTo(cardContainer);
+	var columnRight = $('<div></div>', { 'class': 'column column-right' }).appendTo(cardContainer);
+
+	$('<div></div>', { 'class': 'image' }).appendTo(columnRight);
+	$('<div></div>', { 'class': 'specs', 'html': '<canvas id="canvasWeaponSpecs"></canvas>' }).appendTo(columnLeft);
+	$('<div></div>', { 'class': 'text' }).appendTo(columnRight);
 
 	var nav = $('<nav></nav>').appendTo(container);
 	weapons.forEach(function (weapon, i) {
@@ -150,8 +159,11 @@ $(document).ready(function () {
 		e.preventDefault();
 		var index = $(this).attr('href').replace('#weapon-', '');
 		$('#weaponDetails .image').attr('style', 'background-image: url("img/weapons/' + weapons[index].image +'");');
-		var text = '<h2>%name%</h2><div class="type">%type%</div><div class="desc">%desc%</div>';
-		text = text.replace('%name%', weapons[index].name);
+		var text = '<div class="type">%type%</div><div class="desc">%desc%</div>';
+        var titleName = '%name%';
+        titleName = titleName.replace('%name%', weapons[index].name);
+
+        $('.card-container .weapon-title h3').text(titleName);
 		text = text.replace('%type%', weapons[index].type);
 		text = text.replace('%desc%', weapons[index].description);
 		$('#weaponDetails .text').html(text);
@@ -172,12 +184,12 @@ $(document).ready(function () {
 			datasets: [
 				{
 					label: 'My First dataset',
-					fillColor: 'rgba(46,125,50,0.2)',
-					strokeColor: 'rgba(46,125,50,1)',
-					pointColor: 'rgba(46,125,50,1)',
-					pointStrokeColor: '#fff',
-					pointHighlightFill: '#fff',
-					pointHighlightStroke: 'rgba(220,220,220,1)',
+                    fillColor: "rgba(255,90,94,0.4)",
+                    strokeColor: "rgba(255,90,94,1)",
+                    pointColor: "rgba(255,90,94,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(255,90,94,1)",
 					data: [0,0,0,0,0]
 				}
 			]
