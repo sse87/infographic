@@ -21,7 +21,7 @@
     height: 100px;
     width: 100px;
     margin-top: 20px;
-    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.8);
     margin: 0 auto;
     margin-top: 15px;
 }
@@ -39,10 +39,9 @@
     float: left;
 }
 
-#green #chart-green-left {
+#chart-green-left {
     height: 100%;
     width: 100%;
-
 }
 
 #green #chart-green-middle {
@@ -70,6 +69,9 @@
     font-weight: 300;
     margin: 0;
     margin-bottom: 5px;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
 }
 
 #green .zombie-title {
@@ -79,11 +81,24 @@
     height: 10%;
 }
 
+#green .zombie-text {
+    width: calc(100% - 30px);
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: calc(20% - 20px);
+    margin: 0;
+}
+
+#green .zombie-text p {
+    margin: 0;
+}
+
 #green .zombie-wrapper {
     color: #FF9800;
     padding: 5px;
     width: calc(100% - 10px);
-    height: calc(90% - 125px);
+    height: calc(70% - 135px);
     position: relative;
 }
 

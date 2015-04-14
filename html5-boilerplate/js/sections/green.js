@@ -50,18 +50,27 @@ $(document).ready(function () {
 	}).appendTo(zombieBodyMiddle);
 
 	var zombieWrapperLeft = $(
+        '<div class="zombie-text">' + 
+            '<p>The sleepers are a dangerous breed of zombie. They first appear as if they are dead, but when you get too close they attack.</p>' +
+        '</div>' +
         '<div class="zombie-wrapper">' + 
             '<canvas id="chart-green-left"></canvas>' + 
         '</div>'
         ).appendTo(zombieBodyLeft);
 
 	var zombieWrapperRight = $(
+        '<div class="zombie-text">' + 
+            '<p>The walkers are generally harmless and easy to evade. But when they form a horde they are a dangerous foe.</p>' +
+        '</div>' +
         '<div class="zombie-wrapper">' + 
             '<canvas id="chart-green-right"></canvas>' + 
         '</div>'
         ).appendTo(zombieBodyRight);
 
 	var zombieWrapperMiddle = $(
+        '<div class="zombie-text">' + 
+            '<p>The runners are the most dangerous breed of zombie. They can smell humans from far away and never tire in the chase.</p>' +
+        '</div>' +
         '<div class="zombie-wrapper">' + 
             '<canvas id="chart-green-middle"></canvas>' + 
         '</div>'

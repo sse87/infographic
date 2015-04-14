@@ -22,7 +22,7 @@
     color: black;
     font-size: 1.2em;
     top: calc(50% - 14px);
-    left: calc(50% - 36px);
+    left: calc(50% - 37px);
 }
 
 .subtext-body p {
@@ -61,10 +61,17 @@
     height: 15%;
     text-align: center;
     background-color: #EF6C00;
-    font-weight: 400;
-    font-size: 1.2em;
-    line-height: 225%;
 }
+.chart-title h3 {
+    font-size: 1.2em;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
 
 .chart-wrapper {
     color: #FF9800;
@@ -127,7 +134,7 @@
 .line-legend {
   list-style: none;
   position: absolute;
-  right: 3%;
+  right: 0%;
   padding-top: 14%;
   top: 0;
 }
