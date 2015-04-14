@@ -150,7 +150,7 @@ $(document).ready(function () {
         helpers.addEvent(legendHolderPie.firstChild, 'mouseout', function(){
             window.myPie.draw();
         });
-        pieCanvas.parentNode.appendChild(legendHolderPie.firstChild);
+        pieCanvas.parentNode.parentNode.appendChild(legendHolderPie.firstChild);
         /* ----------------------------- */
 
         /* Middle chart in yellow */

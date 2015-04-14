@@ -19,7 +19,7 @@ $(document).ready(function () {
 
         '<div class="subtext-body">' + 
             '<p>A lot of things have happened since your last visit, survivor.</p>' + 
-        '</div">' + 
+        '</div>' + 
         '<div class="chart-body">' + 
             '<div class="chart-container">' + 
                 '<div class="chart-title">' + 
@@ -42,6 +42,10 @@ $(document).ready(function () {
                     '<span>Human deaths by continent</span>' + 
                 '</div>' + 
                 '<div class="chart-wrapper chart-wrapper-pie">' + 
+                    '<div class="pie-center">' + 
+                        '<span>64%</span>' + 
+                        '<span> left</span>' + 
+                    '</div>' + 
                     '<canvas id="chart-pie-1"></canvas>' + 
                 '</div>' + 
                 '<div id="legend"></div>' + 
