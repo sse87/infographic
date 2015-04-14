@@ -9,6 +9,7 @@ $(document).ready(function () {
 		var info = new Info();
 		info.init();
 	}, 100);
+
     var randomScalingFactor = function(){ return Math.round(Math.random()*100);};
     var randomScalingFactorThousand = function(){ return Math.round(Math.random()*100000);};
 
