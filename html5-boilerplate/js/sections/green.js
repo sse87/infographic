@@ -54,7 +54,7 @@ $(document).ready(function () {
             '<p>One must always be on alert for Sleepers. They first appear as if they are dead, but when you get too close they attack.</p>' +
         '</div>' +
         '<div class="zombie-wrapper">' + 
-            '<canvas id="chart-green-left" style="width: 350px; height: 311px;"></canvas>' + 
+            '<canvas id="chart-green-left"></canvas>' + 
         '</div>'
         ).appendTo(zombieBodyLeft);
 
@@ -63,7 +63,7 @@ $(document).ready(function () {
             '<p>The Walkers are generally harmless and easy to evade. But when they form a horde they are a dangerous foe.</p>' +
         '</div>' +
         '<div class="zombie-wrapper">' + 
-            '<canvas id="chart-green-right" style="width: 350px; height: 311px;"></canvas>' + 
+            '<canvas id="chart-green-right"></canvas>' + 
         '</div>'
         ).appendTo(zombieBodyRight);
 
@@ -72,7 +72,7 @@ $(document).ready(function () {
             '<p>The Runners are the most dangerous breed of zombie. They can smell humans from far away and never tire in the chase.</p>' +
         '</div>' +
         '<div class="zombie-wrapper">' + 
-            '<canvas id="chart-green-middle" style="width: 350px; height: 311px;"></canvas>' + 
+            '<canvas id="chart-green-middle"></canvas>' + 
         '</div>'
         ).appendTo(zombieBodyMiddle);
 });

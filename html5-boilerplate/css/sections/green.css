@@ -24,11 +24,12 @@
     box-shadow: 0 0px 4px rgba(0, 0, 0, 0.8);
     margin: 0 auto;
     margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 #green .zombie-body {
     display: inline-block;
-    height: 75%;
+    height: 570px;
     background-color: #4DB6AC;
     border-radius: 5px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -39,21 +40,6 @@
     float: left;
 }
 
-#chart-green-left {
-    height: 100%;
-    width: 100%;
-}
-
-#green #chart-green-middle {
-    width: 100%;
-    height: 100%;
-}
-
-#green #chart-green-right {
-    width: 100%;
-    height: 100%;
-}
-
 #green .zombie-body-right {
     float: right;
 }
@@ -61,6 +47,21 @@
 #green .zombie-body-middle {
     margin: 0 auto;
     display: block;
+}
+
+#green #chart-green-left {
+    height: 100%;
+    width: 100%;
+}
+
+#green #chart-green-middle {
+    height: 100%;
+    width: 100%;
+}
+
+#green #chart-green-right {
+    height: 100%;
+    width: 100%;
 }
 
 #green .zombie-title h3 {
@@ -83,7 +84,6 @@
 
 #green .zombie-text {
     width: calc(100% - 30px);
-    padding-top: 30px;
     padding-left: 20px;
     padding-right: 20px;
     height: calc(20% - 20px);
@@ -97,9 +97,9 @@
 #green .zombie-wrapper {
     color: #FF9800;
     padding: 5px;
+    padding-top: 25px;
     width: calc(100% - 10px);
     height: calc(70% - 135px);
-    position: relative;
     background-color: #80CBC4;
     border-radius: 130px 130px 5px 5px;
 }
