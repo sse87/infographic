@@ -17,11 +17,55 @@
     max-height: 100%;
     position: relative;
     border-radius: 150px;
-    height: 150px;
     background-color: rgb(0, 105, 92);
-    width: 150px;
+    height: 100px;
+    width: 100px;
     margin-top: 20px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
 }
 
+#green .zombie-body {
+    display: inline-block;
+    height: 75%;
+    background-color: #4DB6AC;
+    border-radius: 5px;
+}
 
+#green .zombie-body-left {
+    float: left;
+    width: 25%;
+}
+
+#green .zombie-body-right {
+    float: right;
+    width: 25%;
+}
+
+#green .zombie-body-middle {
+    margin: 0 auto;
+    display: block;
+    width: 25%;
+}
+
+#green .zombie-title h3 {
+    color: white;
+    font-size: 2.0em;
+    font-weight: 300;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+#green .zombie-title {
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+    background-color: #00796B;
+}
+
+#green .zombie-wrapper {
+    color: #FF9800;
+    padding-top: 10px;
+    width: 100%;
+    height: calc(70%);
+}
 
