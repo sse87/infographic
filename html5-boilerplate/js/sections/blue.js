@@ -219,53 +219,28 @@ $(document).ready(function () {
 	$('<div></div>', { 'class': 'specs', 'html': '<canvas id="canvasWeaponSpecs"></canvas>' }).appendTo(column1);
 	$('<div></div>', { 'class': 'text' }).appendTo(column2);
 	
-	// Default click the first weapon
-	$('#blue nav a').first().trigger('click');
-	
-	/*
-	var radarChartData = {
-		labels: ['Accuracy', 'Mag Size', 'Weight'],
-		datasets: [
-			{
-				label: 'My First dataset',
-				fillColor: 'rgba(46,125,50,0.2)',
-				strokeColor: 'rgba(46,125,50,1)',
-				pointColor: 'rgba(46,125,50,1)',
-				pointStrokeColor: '#fff',
-				pointHighlightFill: '#fff',
-				pointHighlightStroke: 'rgba(220,220,220,1)',
-				data: [97, 150, 7.2]
-			}
-		]
-	};
-	
 	$(window).load(function () {
-		var context = document.getElementById('canvasWeapon' + i).getContext('2d');
-		var chart = new Chart(context).PolarArea(data);
+		var radarChartData = {
+			labels: ['Accuracy', 'Mag Size', 'Weight'],
+			datasets: [
+				{
+					label: 'My First dataset',
+					fillColor: 'rgba(46,125,50,0.2)',
+					strokeColor: 'rgba(46,125,50,1)',
+					pointColor: 'rgba(46,125,50,1)',
+					pointStrokeColor: '#fff',
+					pointHighlightFill: '#fff',
+					pointHighlightStroke: 'rgba(220,220,220,1)',
+					data: []
+				}
+			]
+		};
+		var context = document.getElementById('canvasWeaponSpecs').getContext('2d');
+		window.myRadar = new Chart(context).Radar(radarChartData);
+		
+		// Default click the first weapon
+		$('#blue nav a').first().trigger('click');
 	});
-	
-	var radarChartTestWrapper = $('<div></div>').appendTo(base);
-	$('<canvas id="canvas" height="450" width="450"></canvas>').appendTo(radarChartTestWrapper);
-	
-	var radarChartData = {
-		labels: ['Accuracy', 'Mag Size', 'Weight'],
-		datasets: [
-			{
-				label: 'My First dataset',
-				fillColor: 'rgba(46,125,50,0.2)',
-				strokeColor: 'rgba(46,125,50,1)',
-				pointColor: 'rgba(46,125,50,1)',
-				pointStrokeColor: '#fff',
-				pointHighlightFill: '#fff',
-				pointHighlightStroke: 'rgba(220,220,220,1)',
-				data: [97, 150, 7.2]
-			}
-		]
-	};
-	$(window).load(function () {
-		window.myRadar = new Chart(document.getElementById('canvas').getContext('2d')).Radar(radarChartData);
-	});
-	*/
 	
 	
 });
