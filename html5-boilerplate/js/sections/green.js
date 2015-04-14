@@ -36,36 +36,36 @@ $(document).ready(function () {
         '</div>'
         ).appendTo(wrapper);
 
+	$('<div></div>', {
+		'class': 'zombie',
+		'style': 'background-image: url("img/zombies/zombie-01.png");'
+	}).appendTo(zombieBodyLeft);
+	$('<div></div>', {
+		'class': 'zombie',
+		'style': 'background-image: url("img/zombies/zombie-03.png");'
+	}).appendTo(zombieBodyRight);
+	$('<div></div>', {
+		'class': 'zombie',
+		'style': 'background-image: url("img/zombies/zombie-02.png");'
+	}).appendTo(zombieBodyMiddle);
+
 	var zombieWrapperLeft = $(
         '<div class="zombie-wrapper">' + 
+            '<canvas id="chart-green-left"></canvas>' + 
         '</div>'
         ).appendTo(zombieBodyLeft);
 
 	var zombieWrapperRight = $(
         '<div class="zombie-wrapper">' + 
+            '<canvas id="chart-green-right"></canvas>' + 
         '</div>'
         ).appendTo(zombieBodyRight);
 
 	var zombieWrapperMiddle = $(
         '<div class="zombie-wrapper">' + 
+            '<canvas id="chart-green-middle"></canvas>' + 
         '</div>'
         ).appendTo(zombieBodyMiddle);
-
-	$('<div></div>', {
-		'class': 'zombie',
-		'style': 'background-image: url("img/zombies/zombie-01.png");'
-	}).appendTo(zombieWrapperLeft);
-	$('<div></div>', {
-		'class': 'zombie',
-		'style': 'background-image: url("img/zombies/zombie-03.png");'
-	}).appendTo(zombieWrapperRight);
-	$('<div></div>', {
-		'class': 'zombie',
-		'style': 'background-image: url("img/zombies/zombie-02.png");'
-	}).appendTo(zombieWrapperMiddle);
-	
-	
-	
 });
 
 

@@ -121,6 +121,52 @@ $(document).ready(function () {
         ]
     };
 
+    var radioGreenDataLeft = {
+        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        datasets: [
+            {
+                label: "Sleeper",
+                fillColor: "rgba(255,90,94,0.2)",
+                strokeColor: "rgba(255,90,94,1)",
+                pointColor: "rgba(255,90,94,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(255,90,94,1)",
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+            }
+        ]
+    };
+    var radioGreenDataRight = {
+        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        datasets: [
+            {
+                label: "Runners",
+                fillColor: "rgba(253,180,92,0.2)",
+                strokeColor: "rgba(253,180,92,1)",
+                pointColor: "rgba(253,180,92,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+            }
+        ]
+    };
+    var radioGreenDataMiddle = {
+        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(104,159,56,0.2)",
+                strokeColor: "rgba(104,159,56,1)",
+                pointColor: "rgba(104,159,56,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(104,159,56,1)",
+                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+            }
+        ]
+    };
+
     window.onload = function(){
 
         var ctx1 = document.getElementById("chart-area").getContext("2d");
@@ -205,5 +251,28 @@ $(document).ready(function () {
         barCanvas.parentNode.appendChild(legendHolderBar.firstChild);
         /* ---------------------------- */
 
+        /* Green radio zombie chart left */
+        var radioGreenLeftCanvas = document.getElementById("chart-green-left");
+        var radioGreenLeftChart = radioGreenLeftCanvas.getContext("2d");
+        window.myGreenLeft = new Chart(radioGreenLeftChart).Radar(radioGreenDataLeft, {
+            responsive: false
+        });
+        /* ----------------------------- */
+
+        /* Green radio zombie chart right */
+        var radioGreenRightCanvas = document.getElementById("chart-green-right");
+        var radioGreenRightChart = radioGreenRightCanvas.getContext("2d");
+        window.myGreenRight = new Chart(radioGreenRightChart).Radar(radioGreenDataRight, {
+            responsive: false
+        });
+        /* ----------------------------- */
+
+        /* Green radio zombie chart middle */
+        var radioGreenMiddleCanvas = document.getElementById("chart-green-middle");
+        var radioGreenMiddleChart = radioGreenMiddleCanvas.getContext("2d");
+        window.myGreenMiddle = new Chart(radioGreenMiddleChart).Radar(radioGreenDataMiddle, {
+            responsive: false
+        });
+        /* ----------------------------- */
     };
 });
