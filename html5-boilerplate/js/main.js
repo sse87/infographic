@@ -14,43 +14,43 @@ $(document).ready(function () {
     var randomScalingFactorThousand = function(){ return Math.round(Math.random()*100000);};
 
     var pieData = [
-            {
-                value: 150378,
-                color:"#F7464A",
-                highlight: "#FF5A5E",
-                label: "Asia"
-            },
-            {
-                value: 89032,
-                color: "#46BFBD",
-                highlight: "#5AD3D1",
-                label: "Europe"
-            },
-            {
-                value: 100394,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "North America"
-            },
-            {
-                value: 54093,
-                color: "#949FB1",
-                highlight: "#A8B3C5",
-                label: "Africa"
-            },
-            {
-                value: 73992,
-                color: "#689F38",
-                highlight: "#8BC34A",
-                label: "Oceania"
-            },
-            {
-                value: 37298,
-                color: "#4D5360",
-                highlight: "#616774",
-                label: "South America"
-            }
-        ];
+        {
+            value: 150378,
+            color:"#F7464A",
+            highlight: "#FF5A5E",
+            label: "Asia"
+        },
+        {
+            value: 89032,
+            color: "#46BFBD",
+            highlight: "#5AD3D1",
+            label: "Europe"
+        },
+        {
+            value: 100394,
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "North America"
+        },
+        {
+            value: 54093,
+            color: "#949FB1",
+            highlight: "#A8B3C5",
+            label: "Africa"
+        },
+        {
+            value: 73992,
+            color: "#689F38",
+            highlight: "#8BC34A",
+            label: "Oceania"
+        },
+        {
+            value: 37298,
+            color: "#4D5360",
+            highlight: "#616774",
+            label: "South America"
+        }
+    ];
 
     var barChartData = {
         labels : ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct"],
@@ -80,7 +80,6 @@ $(document).ready(function () {
                 data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
             }
         ]
-
     };
 
     var lineData = {
@@ -168,7 +167,7 @@ $(document).ready(function () {
         ]
     };
 
-    window.onload = function(){
+    $(window).load(function () {
 
         var ctx1 = document.getElementById("chart-area").getContext("2d");
         window.myPie = new Chart(ctx1).Pie(pieData);
@@ -209,18 +208,6 @@ $(document).ready(function () {
         });
         var legendHolderLine = document.createElement('div');
         legendHolderLine.innerHTML = window.myLine.generateLegend();
-        helpers.each(legendHolderLine.firstChild.childNodes, function(legendNode, index){
-            helpers.addEvent(legendNode, 'mouseover', function(){
-                var activeSegment = window.myLine.segments[index];
-                activeSegment.save();
-                activeSegment.fillColor = activeSegment.highlightColor;
-                window.myLine.showTooltip([activeSegment]);
-                activeSegment.restore();
-            });
-        });
-        helpers.addEvent(legendHolderLine.firstChild, 'mouseout', function(){
-            window.myLine.draw();
-        });
         lineCanvas.parentNode.appendChild(legendHolderLine.firstChild);
         /* ---------------------- */
 
@@ -237,18 +224,6 @@ $(document).ready(function () {
 
         var legendHolderBar = document.createElement('div');
         legendHolderBar.innerHTML = window.myBar.generateLegend();
-        helpers.each(legendHolderBar.firstChild.childNodes, function(legendNode, index){
-            helpers.addEvent(legendNode, 'mouseover', function(){
-                var activeSegment = window.myBar.segments[index];
-                activeSegment.save();
-                activeSegment.fillColor = activeSegment.highlightColor;
-                window.myBar.showTooltip([activeSegment]);
-                activeSegment.restore();
-            });
-        });
-        helpers.addEvent(legendHolderBar.firstChild, 'mouseout', function(){
-            window.myBar.draw();
-        });
         barCanvas.parentNode.appendChild(legendHolderBar.firstChild);
         /* ---------------------------- */
 
@@ -275,5 +250,5 @@ $(document).ready(function () {
             responsive: false
         });
         /* ----------------------------- */
-    };
+    });
 });
