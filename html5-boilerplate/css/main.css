@@ -69,7 +69,7 @@ textarea { resize: vertical; }
    ========================================================================== */
 
 body {
-	color: 000;
+	color: #000;
 	font-family: 'Open Sans', sans-serif;
 }
 body > header {
@@ -94,6 +94,7 @@ body > header .actions .fab {
 }
 
 body > footer {
+	background-color: #D1C4E9;/* Deep Purple: 100 */
 	bottom: 0;
 	height: 300px;
 	left: 0;
@@ -105,6 +106,10 @@ body > footer {
 body > footer p {
 	margin-top: 110px;
 	font-size: 1.4em;
+}
+body > footer a {
+	color: #000;
+	text-decoration: none;
 }
 
 
@@ -181,6 +186,7 @@ body > footer p {
 
 nav.sectionNav {
 	right: 20px;
+	opacity: 0.5;
 	position: fixed;
 	top: 50%;
 }

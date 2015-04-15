@@ -168,7 +168,7 @@ $(document).ready(function () {
         ]
     };
 
-    window.onload = function(){
+    $(window).load(function () {
 
         var pieCanvas = document.getElementById("chart-pie-1");
         var pieChart = pieCanvas.getContext("2d");
@@ -248,5 +248,5 @@ $(document).ready(function () {
             responsive: false
         });
         /* ----------------------------- */
-    };
+    });
 });
