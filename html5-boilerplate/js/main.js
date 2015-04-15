@@ -206,18 +206,6 @@ $(document).ready(function () {
         });
         var legendHolderLine = document.createElement('div');
         legendHolderLine.innerHTML = window.myLine.generateLegend();
-        helpers.each(legendHolderLine.firstChild.childNodes, function(legendNode, index){
-            helpers.addEvent(legendNode, 'mouseover', function(){
-                var activeSegment = window.myLine.segments[index];
-                activeSegment.save();
-                activeSegment.fillColor = activeSegment.highlightColor;
-                window.myLine.showTooltip([activeSegment]);
-                activeSegment.restore();
-            });
-        });
-        helpers.addEvent(legendHolderLine.firstChild, 'mouseout', function(){
-            window.myLine.draw();
-        });
         lineCanvas.parentNode.appendChild(legendHolderLine.firstChild);
         /* ---------------------- */
 
@@ -234,18 +222,6 @@ $(document).ready(function () {
 
         var legendHolderBar = document.createElement('div');
         legendHolderBar.innerHTML = window.myBar.generateLegend();
-        helpers.each(legendHolderBar.firstChild.childNodes, function(legendNode, index){
-            helpers.addEvent(legendNode, 'mouseover', function(){
-                var activeSegment = window.myBar.segments[index];
-                activeSegment.save();
-                activeSegment.fillColor = activeSegment.highlightColor;
-                window.myBar.showTooltip([activeSegment]);
-                activeSegment.restore();
-            });
-        });
-        helpers.addEvent(legendHolderBar.firstChild, 'mouseout', function(){
-            window.myBar.draw();
-        });
         barCanvas.parentNode.appendChild(legendHolderBar.firstChild);
         /* ---------------------------- */
 
